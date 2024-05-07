@@ -1,0 +1,97 @@
+.sign-up-button{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 170px;
+    height: 35px;
+    background: #3658C1;
+    box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.25);
+    border-radius: 3.75px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 18px;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+.sign-up-button:hover {
+    background-color: #1d3c7d;
+}
+
+
+
+main{
+    background-color: #EDEEF0;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    padding-top: 50px;
+}
+
+.sign-in{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.sign-in-box{
+    padding-top: 30px;
+    display: grid;
+    grid-template-columns: 120px 400px; 
+    grid-template-rows: repeat(40px); 
+    align-items: center; 
+    justify-content: center;
+    width: 900px;
+    background: #FFFFFF;
+    border-radius: 20px;
+    box-shadow: 0px 3px 7.5px rgba(0, 0, 0, 0.25);
+    height: 500px;
+    padding-bottom: 10px;
+}
+
+.sign-in-box input{
+margin: 0 auto;
+width: 100%;
+height: 30px;
+background: #F9F9F9;
+border: 0.75px solid rgba(0, 0, 0, 0.03);
+box-shadow: 0.75px 0.75px 1.5px rgba(0, 0, 0, 0.25);
+border-radius: 8px;
+}
+
+.sign-in-box label{
+margin: 0 auto;
+font-family: 'Rubik';
+font-style: normal;
+font-weight: 400;
+line-height: 14px;
+align-items: right;
+text-align: left;
+color: #000000;
+}
+
+.sign-in-box .sign-up-button{
+    grid-column: span 2;
+    justify-self: center;
+}
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+

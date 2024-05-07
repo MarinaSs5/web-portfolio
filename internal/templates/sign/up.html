@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Зарегистрироваться</title>
+    <!--link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style-header.css">
+    <link rel="stylesheet" href="style-footer.css">
+    <link rel="stylesheet" href="signup-style.css"-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+      rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+      rel="stylesheet">
+    <style>
+      {% include 'global/style.css' %}
+      {% include 'sign/up.css' %}
+    </style>
+  </head>
+  <body>
+    {% include 'global/header.html' %}
+    <!--header>
+      <div class="main-header">
+        <a href="/"><img src="../static/logo.png" class="logo-picture"></a>
+        <input class="search-field" type="text" id="search" placeholder="Найти пользователя">
+        <div class="header-button-container">
+          <a href="/signup" class="register-button">Зарегистрироваться</a>
+          <a href="/signin" class="login-button">Войти</a>
+        </div>
+      </div>
+      </div>
+      </header-->
+    <main>
+        <section class="sign-in">
+            <div class="sign-in-box">
+            
+                <label for="name">Имя</label>
+                <input type="text" id="name" name="name">
+                <label for="surname">Фамилия</label>
+                <input type="text" id="surname" name="surname">
+                <label for="login">Логин</label>
+                <input type="text" id="login" name="login">
+                <label for="password">Пароль</label>
+                <input type="password" id="password" name="password">
+                <label for="confirm-password">Подтвердите пароль</label>
+                <input type="password" id="confirm-password" name="confirm-password">
+              <a class="sign-up-button" onclick="submit($('#login').val(), $('#name').val(), $('#surname').val(), $('#password').val(), $('#confirm-password').val())">Зарегистрироваться</a>
+            </div>
+            
+        </section>
+    </main>
+    {% include 'global/footer.html' %}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      {% include 'global/script.js' %}
+      {% include 'sign/up.js' %}
+    </script>
+  </body>
+</html>

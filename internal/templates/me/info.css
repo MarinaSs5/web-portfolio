@@ -1,0 +1,515 @@
+.profile-info-container {
+    background-color: #EDEEF0;
+    padding-bottom: 30px;
+    min-width: 1080px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.profile-box {
+    background-color: #ffffff;
+    min-width: 900px;
+    height: auto;
+    margin: 0 auto;
+    box-sizing: border-box;
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    box-shadow: 0px 3px 7.5px rgba(0, 0, 0, 0.25);
+    border-radius: 0px 0px 37.5px 37.5px;
+}
+
+.profile-photo-large {
+    width: 225px;
+    height: 225px;
+    border-radius: 20px;
+    object-fit: cover;
+}
+
+.profile-info, .profile-info-edit {
+    padding: 10px;
+    height: auto;
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    box-sizing: border-box;
+    gap: 15px;
+}
+
+.profile-name-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+/* .profile-name-text {
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 27px;
+    line-height: 32px;
+    margin: 0;
+} */
+
+.profile-main-info {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: space-between;
+    padding: 0px;
+    gap: 20px 15px;
+    isolation: isolate;
+    flex: none;
+    align-self: stretch;
+    flex-grow: 0;
+}
+
+.profile-main-info > div, .profile-contacts-info > div{
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    color: #6C6C6C;
+    padding-left: 20px;
+    min-width: 50px;
+}
+
+.profile-language-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 400;
+    color: #6C6C6C;
+    gap: 8px;
+
+}
+
+.profile-language-title {
+    margin: 0;
+}
+
+.profile-language-list {
+    /* margin: 0;
+    padding: 0; */
+}
+
+.profile-language-list li {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+
+.profile-contacts-info {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: space-between;
+    padding: 0px;
+    gap: 20px 15px;
+    isolation: isolate;
+    flex: none;
+    align-self: stretch;
+    flex-grow: 0;
+}
+
+.profile-contacts-info p {
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    color: #6C6C6C;
+}
+
+.profile-mail {
+    background: url(/static/mail_icon.png) no-repeat;
+    background-size: 25px 25px;
+    background-size: contain;
+    padding-left: 20px;
+}
+
+.profile-tg {
+    background: url(/static/tg_icon.png) no-repeat;
+    background-size: 25px 25px;
+    background-size: contain;
+    padding-left: 20px;
+}
+
+.profile-vk {
+    background: url(/static/vk_icon.png) no-repeat;
+    background-size: 15px 15px;
+    background-size: contain;
+    padding-left: 20px;
+}
+
+.city-icon {
+    background: url(/static/city-icon.png) no-repeat;
+    background-size: 25px 25px;
+    background-size: contain;
+}
+
+.job-icon {
+    background: url(/static/job-icon.png) no-repeat;
+    background-size: 25px 25px;
+    background-size: contain;
+}
+
+.profile-buttons {}
+
+.edit-profile-button,  .save-profile-button, .add-language-button, .remove-language-button{
+    box-sizing: border-box;
+    background: #FFFFFF;
+    border: 0.75px solid #000000;
+    border-radius: 20px;
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 400;
+    color: #6C6C6C;
+    color: #000000;
+    background-size: 20px 20px;
+    padding-left: 25px;
+    padding-right: 25px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.remove-language-button{
+    display: none;
+}
+
+
+.navigation-buttons-container {
+    background-color: #EDEEF0;
+    padding-bottom: 30px;
+    min-width: 1080px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.navigation-buttons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    gap: 37.5px;
+    box-sizing: border-box;
+    width: 900px;
+    height: 30px;
+    flex: none;
+    order: 0;
+    align-self: stretch;
+    flex-grow: 0;
+
+}
+
+.navigation-button-profile {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 7.5px;
+    gap: 7.5px;
+    width: 150px;
+    height: 30px;
+    border: 0.75px solid #3658C1;
+    border-radius: 15px;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 600;
+    user-select: none;
+}
+
+.navigation-button-project {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 7.5px;
+    gap: 7.5px;
+    width: 150px;
+    height: 30px;
+    border: 0.75px solid #3658C1;
+    border-radius: 15px;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 600;
+
+    user-select: none;
+}
+
+.navigation-button-education {
+    box-sizing: border-box;
+    text-align: center;
+    padding: 0px 7.5px;
+    width: 300px;
+    height: 30px;
+    border: 0.75px solid #3658C1;
+    border-radius: 15px;
+    order: 2;
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 600;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+}
+
+.navigation-button-feedback {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 7.5px;
+    gap: 7.5px;
+    width: 90px;
+    height: 30px;
+    border: 0.75px solid #3658C1;
+    border-radius: 15px;
+    flex: none;
+    order: 3;
+    flex-grow: 0;
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 600;
+    user-select: none;
+}
+
+.selected-button,
+.navigation-button:hover {
+    background: #3658C1;
+    border: 0.75px solid #3658C1;
+    border-radius: 15px;
+    color: white;
+    cursor: pointer;
+}
+
+.about-container,
+.skills-container {
+    background-color: #EDEEF0;
+    padding-bottom: 30px;
+    min-width: 1080px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.about,
+.skills {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 22.5px;
+    gap: 20px;
+    width: 900px;
+    height: 100%;
+    background: #FFFFFF;
+    border-radius: 37.5px;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    box-sizing: border-box;
+    box-shadow: 0px 3px 7.5px rgba(0, 0, 0, 0.25);
+}
+
+.about-title,
+.skills-title {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0px 20px;
+    gap: 7.5px;
+    height: 40px;
+    flex: none;
+    order: 0;
+    align-self: stretch;
+    flex-grow: 0;
+
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 600;
+    color: #000000;
+    margin: 0;
+    text-align: left;
+}
+
+.about-description,
+.skills-description {
+
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 300;
+
+    color: #000000;
+    padding: 0;
+    margin: 0;
+}
+
+.about-input {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0px;
+    width: 100%;
+    min-height: 50px;
+    background: #FFFFFF;
+
+    flex: none;
+    align-self: stretch;
+    flex-grow: 0;
+    resize: none;
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 300;
+
+    color: #000000;
+    padding: 10px 10px;
+    box-sizing: border-box;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.save-button {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 3.75px 7.5px;
+
+    background: #FFFFFF;
+    border: 0.75px solid #000000;
+    border-radius: 22.5px;
+
+    font-family: 'Martel';
+    font-style: normal;
+    font-weight: 250;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    background: url(/static/save-icon.png) no-repeat 5px;
+    background-size: 20px 20px;
+    padding-left: 30px;
+    padding-right: 10px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.save-button:hover, .edit-profile-button:hover, .save-profile-button:hover, .add-language-button:hover, .remove-language-button:hover {
+    background-color: #f0f0f0;
+    border-color: #555;
+    color: #333;
+}
+
+.save-button:active, .edit-profile-button:active, .save-profile-button:active, .add-language-button:active, .remove-language-button:active {
+    background-color: #ccc;
+    border-color: #333;
+    color: #000;
+}
+
+main {
+    background-color: #EDEEF0;
+}
+
+.profile-info-edit{
+    /* display: none; */
+}
+
+.profile-box div[contenteditable=true], .edit-language, .edit-level {
+    border: none; 
+    border-bottom: 1px solid #000; 
+    background-color: transparent; 
+    outline: none;
+}
+
+.profile-box .name-surname-edit-container > div, .name-surname-edit-container div{
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 27px;
+    margin: 0;
+    min-width: auto;
+    width: auto;
+    margin-right: 0.3em;
+}
+
+
+.name-surname-edit-container{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.add-language-container{
+    display:flex;
+    gap: 15px;
+}
+
+.edit-language, .edit-level{
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    color: #6C6C6C;
+    font-size: 18px;
+}
+
+.remove-language-button{
+    margin-left: 10px;
+    /* display: none; */
+}
+
+.remove-language-button-invisible{
+    /* display: inline; */
+}
+
+.add-avatar-container{
+    display: none;
+}
+
+form{
+    width: 200px;
+    text-overflow: clip;
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 600;
+    display: flex;
+    font-size: 16px;
+}

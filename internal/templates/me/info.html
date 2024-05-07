@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Профиль</title>
+  <style>
+    {% include 'global/style.css' %}
+    {% include 'me/info.css' %}
+  </style>
+  <!--link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style-header.css">
+  <link rel="stylesheet" href="style-footer.css">
+  <link rel="stylesheet" href="info-style.css"-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+  {% include 'global/header.html' %}
+  <!--header>
+    <div class="main-header">
+      <a href="/"><img src="../static/logo.png" class="logo-picture"></a>
+      <input class="search-field" type="text" id="search" placeholder="Найти пользователя">
+      <div class="header-button-container">
+        <div class="profile-name-container">
+          <p class="profile-name-text-header">Name Surname</p>
+          <img class="profile-photo-small" src="../static/profile-photo.png">
+        </div>
+        <a class="logout-button" href="/logout">Выйти</a>
+      </div>
+    </div>
+  </header-->
+  <main>
+    {% set own = user_id == profile_id %}
+    <section class="profile-info-container">
+      <div class="profile-box">
+        <div>
+        <img class="profile-photo-large" src="/me/{{profile_id}}/avatar">
+        <div class="add-avatar-container">
+          <form id="avatar_form" enctype="multipart/form-data">
+            <input id="avatar_input" name="avatar" type="file" onchange="file_updated(this)">
+          </form>
+          <button id="avatar_upload_button" hidden onclick="update_avatar($('#avatar_form'))">Выгрузить</button>
+        </div>
+        </div>
+        <div class="profile-info">
+          <div class="profile-name-info">
+            <div class="name-surname-edit-container">
+              <div id="edit-profile-name" placeholder="Имя">{{profile_name}}</div>
+              <div id="edit-profile-surname" placeholder="Фамилия">{{profile_surname}}</div>
+            </div>
+          </div>
+          <div class="profile-main-info">
+            <div class="profile-name-text" id="edit-profile-specialty" placeholder="Вашу профессия...">{{profile_specialty}}</div>
+            <div class="profile-name-text city-icon" id="edit-profile-city" placeholder="Место жительства...">{{profile_city}}</div>
+            <div class="profile-name-text job-icon" id="edit-profile-job" placeholder="Место работы...">{{profile_job}}</div>
+          </div>
+          <div class="profile-language-info">
+            <p class="profile-language-title">Владение языками</p>
+          <div hidden="true" class="add-language-container" style="display: none;">
+            <!-- <input type="text" class="edit-language" value=""> -->
+            <select class="edit-language" id="languageSelect">
+              <option value="Авадхи">Авадхи</option>
+              <option value="Азербайджанский">Азербайджанский</option>
+              <option value="Амхарский">Амхарский</option>
+              <option value="Английский" selected>Английский</option>
+              <option value="Арабский">Арабский</option>
+              <option value="Ассамский">Ассамский</option>
+              <option value="Белорусский">Белорусский</option>
+              <option value="Бенгальский">Бенгальский</option>
+              <option value="Бходжпури">Бходжпури</option>
+              <option value="Бирманский">Бирманский</option>
+              <option value="Венгерский">Венгерский</option>
+              <option value="Вьетнамский">Вьетнамский</option>
+              <option value="Греческий">Греческий</option>
+              <option value="Гуджарати">Гуджарати</option>
+              <option value="Дакхни">Дакхни</option>
+              <option value="Игбо">Игбо</option>
+              <option value="Индонезийский">Индонезийский</option>
+              <option value="Испанский">Испанский</option>
+              <option value="Итальянский">Итальянский</option>
+              <option value="Каннада">Каннада</option>
+              <option value="Китайский">Китайский</option>
+              <option value="Корейский">Корейский</option>
+              <option value="Мадурский">Мадурский</option>
+              <option value="Магахи">Магахи</option>
+              <option value="Майтхили">Майтхили</option>
+              <option value="Малагасийский">Малагасийский</option>
+              <option value="Малайский">Малайский</option>
+              <option value="Малаялам">Малаялам</option>
+              <option value="Марвари">Марвари</option>
+              <option value="Маратхи">Маратхи</option>
+              <option value="Непальский">Непальский</option>
+              <option value="Нидерландский">Нидерландский</option>
+              <option value="Оромо">Оромо</option>
+              <option value="Ория">Ория</option>
+              <option value="Панджаби">Панджаби</option>
+              <option value="Персидский">Персидский</option>
+              <option value="Польский">Польский</option>
+              <option value="Португальский">Португальский</option>
+              <option value="Пушту">Пушту</option>
+              <option value="Румынский">Румынский</option>
+              <option value="Русский">Русский</option>
+              <option value="Сараики">Сараики</option>
+              <option value="Себуанский">Себуанский</option>
+              <option value="Сербохорватский">Сербохорватский</option>
+              <option value="Синдхи">Синдхи</option>
+              <option value="Сингальский">Сингальский</option>
+              <option value="Словакий">Словакий</option>
+              <option value="Сунданский">Сунданский</option>
+              <option value="Тагальский">Тагальский</option>
+              <option value="Тайский">Тайский</option>
+              <option value="Тамильский">Тамильский</option>
+              <option value="Телугу">Телугу</option>
+              <option value="Турецкий">Турецкий</option>
+              <option value="Узбекский">Узбекский</option>
+              <option value="Украинский">Украинский</option>
+              <option value="Урду">Урду</option>
+              <option value="Французский">Французский</option>
+              <option value="Фула">Фула</option>
+              <option value="Харьянви">Харьянви</option>
+              <option value="Хауса">Хауса</option>
+              <option value="Хинди">Хинди</option>
+              <option value="Чванский">Чванский</option>
+              <option value="Чешский">Чешский</option>
+              <option value="Читтагонг">Читтагонг</option>
+              <option value="Чхаттисгархи">Чхаттисгархи</option>
+              <option value="Чжуанский">Чжуанский</option>
+              <option value="Шона">Шона</option>
+              <option value="Яванский">Яванский</option>
+              <option value="Японский">Японский</option>
+              <option value="Ярбиа">Ярбиа</option>
+          </select>
+          
+            <select class="edit-level">
+              <option value="A1">A1</option>
+              <option value="A2">A2</option>
+              <option value="B1">B1</option>
+              <option value="B2">B2</option>
+              <option value="C1">C1</option>
+              <option value="C2">C2</option>
+            </select>
+            <div onclick="add_language($('.edit-language').val(), $('.edit-level').val())" class="add-language-button">Добавить язык</div>
+            </div>
+            <ul class="profile-language-list" id="edit-language-list">
+            </ul>
+          </div>
+          <div class="profile-contacts-info">
+            <div id="edit-profile-mail" class="profile-mail" placeholder="Электронная почта">{{profile_mail}}</div>
+            <div id="edit-profile-tg" class="profile-tg" placeholder="Телеграм">{{profile_tg}}</div>
+            <div id="edit-profile-vk" class="profile-vk" placeholder="Вконтакте">{{profile_vk}}</div>
+          </div>
+          <div class="profile-buttons">
+            {% if own %}
+            <a class="edit-profile-button" onclick="make_editable_elements()">Редактировать профиль</a>
+            {% endif %}
+            <a class="save-profile-button save-profile-button" style="display: none;" onclick="save_profile_info()">Сохранить изменения</a>
+          </div>
+        </div>
+          
+        </div>
+    </section>
+    <section class="navigation-buttons-container">
+      <div class="navigation-buttons">
+        <a class="navigation-button-profile navigation-button selected-button">Профиль</a>
+        <a class="navigation-button-project navigation-button">Проекты</a>
+        <a class="navigation-button-education navigation-button">Образование и достижения</a>
+        <a class="navigation-button-feedback navigation-button">Отзывы</a>
+      </div>
+    </section>
+    <section class="about-container">
+      <div class="about">
+        <p class="about-title">О себе</p>
+        {% if own %}
+                <p class="about-description">Представьте себя коротко, используя несколько предложений. Укажите основные аспекты
+          вашей профессиональной деятельности и опыт работы.</p>
+          <textarea class="about-input" id="about-input">{{ghjfgjfg}}</textarea>
+          <a class="save-button">Сохранить</a>
+          {% else %}
+          <textarea readonly class="about-input" id="about-input">{{ghjfgjfg}}</textarea>
+        {% endif %}
+      </div>
+    </section>
+    <section class="skills-container">
+      <div class="skills">
+        <p class="skills-title">Навыки</p>
+        {% if own %}
+        <p class="skills-description">Добавьте свои ключевые навыки, разделяя их запятыми. Это поможет другим
+          пользователям найти вас при поиске по навыкам и потребностям.</p>
+        <textarea class="about-input" id="skills-input">{{ghjfgjfg}}</textarea>
+        <a class="save-button">Сохранить</a>
+        {% else %}
+        <textarea readonly class="about-input" id="skills-input">{{ghjfgjfg}}</textarea>
+        {% endif %}
+      </div>
+    </section>
+  </main>
+  {% include 'global/footer.html' %}
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    {% include 'global/script.js' %}
+    {% include 'me/info.js' %}
+  </script>
+</body>
+</html>

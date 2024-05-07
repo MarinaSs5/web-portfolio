@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Войти</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+      rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+      rel="stylesheet">
+    <!--link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style-header.css">
+    <link rel="stylesheet" href="style-footer.css">
+    <link rel="stylesheet" href="signin-style.css"-->
+    <style>
+      {% include 'global/style.css' %}
+      {% include 'sign/in.css' %}
+    </style>
+  </head>
+  <body>
+    {% include 'global/header.html' %}
+    <!-- <header>
+      <div class="main-header">
+        <a href="/"><img src="../static/logo.png" class="logo-picture"></a>
+        <input class="search-field" type="text" id="search" placeholder="Найти пользователя">
+        <div class="header-button-container">
+          <a href="/signup" class="register-button">Зарегистрироваться</a>
+          <a href="/signin" class="login-button">Войти</a>
+        </div>
+      </div
+    </header> -->
+    <main>
+      <section class="sign-in">
+        <div class="sign-in-box">
+          <label for="username">Логин</label>
+          <input type="text" id="username" name="username">
+          <label for="password">Пароль</label>
+          <input type="password" id="password" name="password">
+          <a class="login-button" onclick="submit($('#username').val(), $('#password').val())">Войти</a>
+        </div>
+      </section>
+    </main>
+    {% include 'global/footer.html' %}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      {% include 'global/script.js' %}
+      {% include 'sign/in.js' %}
+    </script>
+    </body>
+    
+    </html>

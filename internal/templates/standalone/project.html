@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Проект</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style-header.css">
+  <link rel="stylesheet" href="style-footer.css">
+  <link rel="stylesheet" href="project-style.css">
+</head>
+
+<body>
+  <!-- {% include 'header.html' %} -->
+  <header>
+    <div class="main-header">
+      <a href="/"><img src="../static/logo.png" class="logo-picture"></a>
+      <input class="search-field" type="text" id="search" placeholder="Найти пользователя">
+      <div class="header-button-container">
+        <div class="profile-name-container">
+          <p class="profile-name-text-header">Name Surname</p>
+          <img class="profile-photo-small" src="../static/profile-photo.png">
+        </div>
+        <a class="logout-button" href="/logout">Выйти</a>
+      </div>
+    </div>
+    </div>
+  </header>
+  <main>
+    <section class="projects-user-info-container">
+        <div class="projects-user-info">
+            <img class="profile-photo-projects-user-info" src="../static/profile-photo.png">
+            <p class="projects-user-name-text">{{profile_name}} {{ profile_surname }}</p>
+        </div>
+      </section>
+      <section class="navigation-buttons-container">
+        <div class="navigation-buttons">
+          <a class="navigation-button-profile navigation-button">Профиль</a>
+          <a class="navigation-button-project navigation-button">Проекты</a>
+          <a class="navigation-button-education navigation-button">Образование и достижения</a>
+          <a class="navigation-button-feedback navigation-button">Отзывы</a>
+        </div>
+      </section>
+      <section class="project-info-container">
+        <div class="project-info">
+          <p class="project-title">Проекты</p>
+          <div class="project-info-button-container">
+            <a class="edit-project-button">Редактировать проект</a>
+            <a class="save-project-button">Сохранить</a>
+          </div>
+          <div class="project-description-info">
+            <div class="project-image-container">
+              <img class="project-cover-img" src="../static/project-default.png">
+              <a class="add-project-cover-button">Прикрепить обложку</a>
+            </div>
+            <div class="project-main-description">
+              <p class="table-description-title">Тип проекта:</p>
+              <p class="project-type"></p>
+              <p class="table-description-title">Описание проекта:</p>
+              <p class="project-description"></p>
+              <p class="table-description-title">Ссылка:</p>
+              <a class="project-link"></a>
+              <p class="table-description-title">Файл:</p>
+              <a class="project-file-link"></a>
+            </div>
+          </div>
+          <p class="project-title">Фрагмент перевода</p>
+        </div>
+      </section>
+  </main>
+  <footer>
+    <div class="main-footer">
+      <p class="team-name">White Hatters, 2024</p>
+    </div>
+  </footer>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>

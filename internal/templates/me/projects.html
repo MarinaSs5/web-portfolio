@@ -1,0 +1,32 @@
+Профиль: {{profile_id}} {{profile_name}} {{profile_surname}}
+<br>
+Проекты ({{profile_projects|length}}):<br>
+{% for proj in profile_projects %} {{proj[1]}} ({{proj[0]}}) <button onclick="remove_project('{{proj[0]}}')">Удалить</button><br>
+{% endfor %}
+<br>
+<input id="pname" type="text">
+<button onclick="add_project($('#pname').val())">Добавить</button>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    function add_project(name)
+    {
+        $.post('/me/{{profile_id}}/projects/add',
+        {
+            'name': name,
+        },
+        function(response)
+        {
+        }, 'json');    
+    }
+    function remove_project(id)
+    {
+        $.post('/me/{{profile_id}}/projects/remove',
+        {
+            'id': id,
+        },
+        function(response)
+        {
+        }, 'json');    
+    }
+</script>
