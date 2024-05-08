@@ -1,0 +1,222 @@
+<html>
+    Профиль: {{user_id}} {{user_name}} {{user_surname}}
+    <br>
+    Проект типа <input id="type" value="{{project_type}}" type="text"> &quot;<input id="name" value="{{project_name}}" type="text">&quot; ({{project_id}}), создан <span id="crtime"></span>
+    <br>
+    Создатель: {{project_user_id}} {{project_user_name}} {{project_user_surname}}
+    <br>
+    Описание: <input id="desc" value="{{project_description}}" type="text">
+    <br>
+    Обложка: 
+    <img src="/project/{{project_id}}/thumbnail">
+    <form id="thumbnail_form" enctype="multipart/form-data">
+    <input name="thumbnail" type="file" onchange="thumbnail_updated(this)">
+    </form>
+    <button id="thumbnail_submit" hidden onclick="update_thumbnail('#thumbnail_form')">Выгрузить</button>
+    <br>
+    Файл:
+    <a href="/project/{{project_id}}/content">pdf</a>
+    <form id="content_form" enctype="multipart/form-data">
+    <input name="content" type="file" onchange="content_updated(this)">
+    </form>
+    <button id="content_submit" hidden onclick="update_content('#content_form')">Выгрузить</button>
+    <br>
+    <button onclick="update_fields($('#name').val(), $('#type').val(), $('#orig').val(), $('#tran').val(), $('#desc').val())">Сохранить всё</button>
+    Предпросмотр: 
+    <table>
+        <tr>
+            <th>
+                Оригинал <input id="orig" value="{{project_original}}" type="text">
+            </th>
+            <th>
+                Перевод <input id="tran" value="{{project_translation}}" type="text">
+            </th>
+        </tr>
+        {% for preview in project_previews %}
+        <tr id="preview_{{loop.index - 1}}"> <!--loop.index - индекс итерации цикла (не с нуля, а с единицы, потому что блять потому что)-->
+            <td><input type="text" value="{{preview[0]}}"></td>
+            <td><input type="text" value="{{preview[1]}}"></td>
+            <td><button onclick="update_preview(this.parentElement.parentElement.id)">Сохранить</button><button onclick="remove_preview(this.parentElement.parentElement.id)">Удалить</button></td>
+        </tr>
+        {% endfor %}
+        <tr>
+            <td><input id="neworig" type="text"></td>
+            <td><input id="newtran" type="text"></td>
+            <td><button onclick="add_preview($('#neworig').val(), $('#newtran').val())">Добавить</button></td>
+        </tr>
+    </table>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script>
+    // Перевод из epoch time в Date и в строку (jinja не может сам перевести)
+    date = new Date(0);
+    date.setUTCSeconds({{project_date}});
+    $('#crtime').text( date.toString() ); // можешь сам склеить из .getMonth(), .getDate() и т д
+
+    function update_fields(name, type, original, translation, description)
+    {
+        $.post('/project/{{project_id}}/update',
+        {
+            'name': name,
+            'type': type,
+            'original': original,
+            'translation': translation,
+            'description': description,
+        },
+        function(response)
+        {
+        }, 'json');    
+    }
+
+
+
+
+
+    // функции для массива предпросмотра (add_html, remove_html и предзагрузку сам добавишь)
+    function add_preview(original, translation)
+    {
+        $.post('/project/{{project_id}}/addpreview',
+        {
+            'original': original,
+            'translation': translation
+        },
+        function(response)
+        {
+        }, 'json');
+    }
+    function update_preview(id)
+    {
+        let splitstr = id.split('_');
+        let index = parseInt(splitstr[splitstr.length - 1]);
+
+        let original = $(`#${id}`).children('td') // children() даёт доступ к дочерним элементам, аргументом может быть тег нужного элемента
+                                                 .eq(0) // eq() это индексатор ( [] берёт не элемент, а элемент как html текст 🤷‍♂️)
+                                                       .children('input').eq(0).val(); // дальше по-аналогии
+        let translation = $(`#${id}`).children('td').eq(1).children('input').eq(0).val();
+        // я ненавижу jquery и js, самый уебанский синтаксис в моей жизни
+        
+        $.post('/project/{{project_id}}/updatepreview',
+        {
+            'index': index,
+            'original': original,
+            'translation': translation
+        },
+        function(response)
+        {
+        }, 'json');
+    }
+    function remove_preview(id)
+    {
+        let splitstr = id.split('_');
+        let index = parseInt(splitstr[splitstr.length - 1]);
+        $.post('/project/{{project_id}}/removepreview',
+        {
+            'index': index,
+        },
+        function(response)
+        {
+        }, 'json');
+    }
+
+
+
+
+
+
+    // функции для обложки
+    let thumbnail_valid = false;
+    function update_thumbnail(form_id)
+    {
+        if(!thumbnail_valid)
+            return;
+        $.ajax(
+        {
+            url: '/project/{{project_id}}/newthumbnail',
+            type: 'POST',
+            data: new FormData($(form_id)[0]),
+            cache: false,
+            processData: false,  
+            contentType: false,
+            success: function(response)
+            {
+                $('#thumbnail_submit').attr('hidden', true);
+            }
+        });
+    }
+    function thumbnail_updated(input)
+    {
+        let file = input.files[0];
+        thumbnail_valid = false;
+        $('#thumbnail_submit').attr('hidden', true);
+        if(file.type != 'image/jpeg')
+        {
+            alert('Файл должен быть изображением с расширением JPEG.');
+            return;
+        }
+        if(file.size > 1024*1024*2)
+        {
+            alert('Размер файла не должен превышать 2 МБ.');
+            return;
+        }
+        thumbnail_valid = true;
+        $('#thumbnail_submit').attr('hidden', false);
+    }
+
+
+
+
+
+
+    // функции для файла проекта
+    let content_valid = false;
+    function update_content(form_id)
+    {
+        if(!content_valid)
+            return;
+        $.ajax(
+        {
+            url: '/project/{{project_id}}/newcontent',
+            type: 'POST',
+            data: new FormData($(form_id)[0]),
+            cache: false,
+            processData: false,  
+            contentType: false,
+            success: function(response)
+            {
+                $('#content_submit').attr('hidden', true);
+            }
+        });
+    }
+    function content_updated(input)
+    {
+        let file = input.files[0];
+        content_valid = false;
+        $('#content_submit').attr('hidden', true);
+        if(file.type != 'application/pdf')
+        {
+            alert('Файл должен быть документом с расширением PDF.');
+            return;
+        }
+        if(file.size > 1024*1024*20)
+        {
+            alert('Размер файла не должен превышать 20 МБ.');
+            return;
+        }
+        content_valid = true;
+        $('#content_submit').attr('hidden', false);
+    }
+
+    </script>
+</html>
