@@ -7,8 +7,8 @@ from . import shared
 def exists(id):
     return shared.key_exists('project', 'id', id)
 def create(id, user, date, name):
-    shared.key_create('project', ('id', 'user', 'date', 'name', 'type', 'description', 'thumbnail', 'content', 'previews'),
-                                 (id,   user,   date,   name,   '',     '',            b'',         b'',       '[]'))
+    shared.key_create('project', ('id', 'user', 'date', 'name', 'type', 'original', 'translation', 'description', 'thumbnail', 'content', 'previews'),
+                                 (id,   user,   date,   name,   '',     '',         '',            '',            b'',         b'',       '[]'))
 def remove(id):
     shared.key_remove('project', 'id', id)
 
@@ -35,6 +35,20 @@ def type_read(id):
     return str(shared.simple_field_read('project', 'id', 'type', id))
 def type_update(id, typee):
     shared.simple_field_update('project', 'id', 'type', id, typee)
+
+
+
+def original_read(id):
+    return str(shared.simple_field_read('project', 'id', 'original', id))
+def original_update(id, original):
+    shared.simple_field_update('project', 'id', 'original', id, original)
+
+
+
+def translation_read(id):
+    return str(shared.simple_field_read('project', 'id', 'translation', id))
+def translation_update(id, translation):
+    shared.simple_field_update('project', 'id', 'translation', id, translation)
 
 
 
