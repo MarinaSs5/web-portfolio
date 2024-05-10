@@ -1,39 +1,69 @@
 header {
     background-color: #B0C3FF;
     width: 100%;
+    font-family: 'Rubik';
+font-style: normal;
+font-weight: 300;
+font-size: 14px;
+line-height: 17px;
 }
 
 .main-header {
-    /* background-color: #B0C3FF; */
-    padding: 10px 10px 10px 50px;
-    max-width: 1080px;
+    background-color: #B0C3FF;
+    padding-top: 14.5px;
+    padding-bottom: 14.5px;
+    width: 1100px;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
     box-sizing: border-box;
+    padding-left: 30px;
+    padding-right: 30px;
 }
 
 .logo-picture {
-    width: 200px;
-    height: 32px;
+    width: 160px;
+    height: 26px;
 }
 
 .search-field {
-    width: 365px;
-    height: 30px;
-    border: none;
-    border-radius: 30px;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-    outline: none;
-    font-size: 20;
-    padding: 0px 0px 0px 20px;
-    box-sizing: border-box;
+    all: unset;
+    box-sizing:border-box;
+    padding-left: 35px;
+    padding-top: 4.5px;
+    padding-bottom: 4.5px;
+    padding-right: 8px;
+    width: 311px;
+    height: 25px;
+    background-image: url('/static/search-icon.svg'); 
+    background-position: 10px center; 
+    background-repeat: no-repeat; 
+    background-size: 15px 15px;
+    background-color: #FFFFFF;
+    border-radius: 4px;
     font-family: 'Rubik';
     font-style: normal;
     font-weight: 300;
-    font-size: 15px;
-    line-height: 18px;
+    font-size: 14px;
+    line-height: 17px;
+}
+
+.hint-icon{
+    width: 20px;
+    height: 20px;
+    background-image: url('/static/hint-icon.svg'); 
+    background-position: center center; 
+    background-repeat: no-repeat; 
+    background-size: 20px 20px;
+    cursor: pointer;
+}
+
+.search-container{
+    display: flex;
+    flex-direction: space-between;
+    gap: 5px;
+    align-items:center;
 }
 
 .search-field::placeholder {
@@ -50,55 +80,48 @@ header {
 
 
 .register-button {
-    width: 175px;
-    height: 35px;
-    font-size: 20;
-    color: #fff;
-    background-color: transparent;
-    border: none;
-    border-radius: 5px;
-    text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
-    cursor: pointer;
+    padding: 7px 20px;
     font-family: 'Rubik';
     font-style: normal;
-    font-weight: 700;
-    font-size: 15px;
-    line-height: 18px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
     color: #FFFFFF;
-    text-decoration: none;
     display: flex;
-    flex-direction: row;
     justify-content: center;
     align-items: center;
-    margin-right: 10px;
+    background: #3658C1;
+    box-shadow: 0px 2.30769px 2.30769px rgba(0, 0, 0, 0.25);
+    border-radius: 4px;
+    margin-right: 20px;
 }
 .profile-photo-small {
-    width: 30px;
-    height: 30px;
-    border-radius: 20px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
 }
 
 .profile-name-container {
-    width: auto;
     display: flex;
-    margin-right: 30px;
+    margin-right: 20px;
     align-items: center;
 }
 
 .profile-name-text-header {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    align-items: center;
     padding: 0;
-    gap: 7.5px;
-    width: auto;
-    height: 26px;
-    filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.25));
-    border-radius: 3.75px;
-    color: #FFFFFF;
     margin: 0;
+    filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.25));
+    color: #FFFFFF;
     margin-right: 10px;
+font-family: 'Rubik';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 17px;
+display: flex;
+align-items: center;
+text-align: center;
+
 }
 
 .header-button-container a{
@@ -106,33 +129,28 @@ header {
 }
 
 .register-button:hover {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: #1d3c7d;
 }
 
 .login-button {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    width: 90px;
-    height: 35px;
-    background: #3658C1;
-    box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.25);
-    border-radius: 3.75px;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
-    cursor: pointer;
+    padding: 7px 20px;
     font-family: 'Rubik';
     font-style: normal;
-    font-weight: 700;
-    font-size: 15px;
-    line-height: 18px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
     color: #FFFFFF;
-    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #3658C1;
+    box-shadow: 0px 2.30769px 2.30769px rgba(0, 0, 0, 0.25);
+    border-radius: 4px;
 }
 
 .header-button-container {
     display: flex;
-    width: 275px;
+    width: 400px;
     justify-content: flex-end;
     align-items: center;
     height: 35px;
@@ -150,26 +168,64 @@ header {
 }
 
 .logout-button{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    width: 90px;
-    height: 35px;
-    background: #3658C1;
-    box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.25);
-    border-radius: 3.75px;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
-    cursor: pointer;
-    font-family: 'Rubik';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 18px;
-    color: #FFFFFF;
-    text-decoration: none;   
+padding: 7px 20px;
+font-family: 'Rubik';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 17px;
+color: #FFFFFF;
+display: flex;
+justify-content: center;
+align-items: center;
+background: #3658C1;
+box-shadow: 0px 2.30769px 2.30769px rgba(0, 0, 0, 0.25);
+border-radius: 4px;
 }
 
 .logout-button:hover {
     background-color: #1d3c7d;
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 150px;
+    background-color: rgba(0, 0, 0, 0.7) ;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+    position: absolute;
+    z-index: 1;
+    top: -50%;
+    left: 115%;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+
+.tooltip .tooltiptext::after {
+    content: " ";
+    position: absolute;
+    top: 50%;
+    right: 100%; /* To the left of the tooltip */
+    margin-top: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent rgba(0, 0, 0, 0.7) transparent transparent;
+}
+
+.tooltip .tooltiptext {
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+.tooltip:hover .tooltiptext {
+    opacity: 1;
 }

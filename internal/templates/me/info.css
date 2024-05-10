@@ -10,28 +10,24 @@
 }
 
 .profile-box {
-    background-color: #ffffff;
-    min-width: 900px;
-    height: auto;
-    margin: 0 auto;
-    box-sizing: border-box;
-    border-bottom-left-radius: 50px;
-    border-bottom-right-radius: 50px;
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: center;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    box-shadow: 0px 3px 7.5px rgba(0, 0, 0, 0.25);
-    border-radius: 0px 0px 37.5px 37.5px;
+    box-sizing:border-box;
+background-color: #ffffff;
+display: flex;
+flex-direction: row;
+align-items: flex-start;
+padding: 20px;
+gap: 20px;
+width: 1100px;
+box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.25);
+border-radius: 0px 0px 8px 8px;
 }
 
 .profile-photo-large {
     width: 225px;
     height: 225px;
-    border-radius: 20px;
+    border-radius: 8px;
     object-fit: cover;
+
 }
 
 .profile-info, .profile-info-edit {
@@ -44,7 +40,6 @@
     align-items: flex-start;
     justify-content: center;
     box-sizing: border-box;
-    gap: 15px;
 }
 
 .profile-name-info {
@@ -52,6 +47,7 @@
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
+    margin-bottom: 4px;
 }
 
 /* .profile-name-text {
@@ -74,30 +70,28 @@
     isolation: isolate;
     flex: none;
     align-self: stretch;
-    flex-grow: 0;
+    margin-bottom: 15px;
 }
 
 .profile-main-info > div, .profile-contacts-info > div{
-    font-family: 'Rubik';
-    font-style: normal;
-    font-weight: 400;
-    display: flex;
-    align-items: center;
-    color: #6C6C6C;
-    padding-left: 20px;
+font-family: 'Roboto', sans-serif;
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 18px;
+color: #6C6C6C;
+    padding-left: 25px;
     min-width: 50px;
 }
 
 .profile-language-info {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    font-family: 'Rubik';
-    font-style: normal;
-    font-weight: 400;
-    color: #6C6C6C;
-    gap: 8px;
-
+font-family: 'Roboto', sans-serif;
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 18px;
+color: #6C6C6C;
+gap: 8px;
 }
 
 .profile-language-title {
@@ -105,13 +99,19 @@
 }
 
 .profile-language-list {
-    /* margin: 0;
-    padding: 0; */
+    margin: 0;
+    padding: 0;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    list-style: none;
 }
 
 .profile-language-list li {
     display: flex;
-    margin-bottom: 10px;
+    margin-bottom: 4px;
+    background: url(/static/lang-list-marker.svg) no-repeat left center;
+    background-size: 8px 8px;
+    padding-left: 13px;
 }
 
 
@@ -127,6 +127,7 @@
     flex: none;
     align-self: stretch;
     flex-grow: 0;
+    margin-bottom: 15px;
 }
 
 .profile-contacts-info p {
@@ -139,55 +140,77 @@
 }
 
 .profile-mail {
-    background: url(/static/mail_icon.png) no-repeat;
+    background: url(/static/mail-icon.svg) no-repeat;
     background-size: 25px 25px;
     background-size: contain;
     padding-left: 20px;
 }
 
 .profile-tg {
-    background: url(/static/tg_icon.png) no-repeat;
+    background: url(/static/telegram-icon.svg) no-repeat;
     background-size: 25px 25px;
     background-size: contain;
     padding-left: 20px;
 }
 
 .profile-vk {
-    background: url(/static/vk_icon.png) no-repeat;
-    background-size: 15px 15px;
-    background-size: contain;
+    background: url(/static/vk-icon.svg) no-repeat;
+    background-size: 20px 20px;
+    background-position-y: center;
     padding-left: 20px;
 }
 
 .city-icon {
-    background: url(/static/city-icon.png) no-repeat;
+    background: url(/static/location-icon.svg) no-repeat;
     background-size: 25px 25px;
     background-size: contain;
 }
 
 .job-icon {
-    background: url(/static/job-icon.png) no-repeat;
+    background: url(/static/company.svg) no-repeat;
+    background-size: 25px 25px;
+    background-size: contain;
+}
+
+.profession-icon{
+    background: url(/static/profession-icon.svg) no-repeat;
     background-size: 25px 25px;
     background-size: contain;
 }
 
 .profile-buttons {}
 
-.edit-profile-button,  .save-profile-button, .add-language-button, .remove-language-button{
-    box-sizing: border-box;
-    background: #FFFFFF;
-    border: 0.75px solid #000000;
-    border-radius: 20px;
-    font-family: 'Rubik';
-    font-style: normal;
-    font-weight: 400;
-    color: #6C6C6C;
-    color: #000000;
-    background-size: 20px 20px;
-    padding-left: 25px;
-    padding-right: 25px;
-    cursor: pointer;
-    user-select: none;
+.edit-profile-button,  .save-profile-button{
+all: initial;
+font-family: 'Rubik';
+font-style: normal;
+font-weight: 400;
+font-size: 12px;
+line-height: 14px;
+display: flex;
+align-items: center;
+text-align: center;
+color: #000000;
+box-sizing: border-box;
+background: #FFFFFF;
+border: 1px solid #000000;
+border-radius: 25px;
+}
+
+.edit-profile-button{
+    padding: 5px 10px 5px 27px;
+    background: url(/static/edit-button-icon.svg) no-repeat;
+    background-size: 12px 12px;
+    background-position-y:center;
+    background-position-x: 10px;
+}
+
+.save-profile-button{
+    padding: 5px 10px 5px 27px;
+    background: url(/static/save-icon.svg) no-repeat;
+    background-size: 12px 12px;
+    background-position-y:center;
+    background-position-x: 10px;
 }
 
 .remove-language-button{
@@ -213,7 +236,7 @@
     padding: 0px;
     gap: 37.5px;
     box-sizing: border-box;
-    width: 900px;
+    width: 1100px;
     height: 30px;
     flex: none;
     order: 0;
@@ -223,24 +246,23 @@
 }
 
 .navigation-button-profile {
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 0px 7.5px;
-    gap: 7.5px;
-    width: 150px;
-    height: 30px;
-    border: 0.75px solid #3658C1;
-    border-radius: 15px;
-    flex: none;
-    order: 1;
-    flex-grow: 0;
-    font-family: 'Rubik';
-    font-style: normal;
-    font-weight: 600;
-    user-select: none;
+box-sizing: border-box;
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 0px 7.5px;
+gap: 7.5px;
+width: 150px;
+height: 30px;
+background: #3658C1;
+border: 0.75px solid #3658C1;
+border-radius: 4px;
+font-family: 'Rubik';
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 19px;
 }
 
 .navigation-button-project {
@@ -253,63 +275,67 @@
     gap: 7.5px;
     width: 150px;
     height: 30px;
+    background: transparent;
     border: 0.75px solid #3658C1;
-    border-radius: 15px;
-    flex: none;
-    order: 1;
-    flex-grow: 0;
+    border-radius: 4px;
     font-family: 'Rubik';
     font-style: normal;
-    font-weight: 600;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    text-decoration: none;
+}
 
-    user-select: none;
+.navigation-button-project:link, .navigation-button-project:visited{
+    color: #000000;
 }
 
 .navigation-button-education {
-    box-sizing: border-box;
-    text-align: center;
-    padding: 0px 7.5px;
     width: 300px;
     height: 30px;
-    border: 0.75px solid #3658C1;
-    border-radius: 15px;
-    order: 2;
-    font-family: 'Rubik';
-    font-style: normal;
-    font-weight: 600;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    user-select: none;
-}
 
-.navigation-button-feedback {
-    box-sizing: border-box;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     padding: 0px 7.5px;
     gap: 7.5px;
-    width: 90px;
-    height: 30px;
+    background: transparent;
     border: 0.75px solid #3658C1;
-    border-radius: 15px;
-    flex: none;
-    order: 3;
-    flex-grow: 0;
+    border-radius: 4px;
     font-family: 'Rubik';
     font-style: normal;
-    font-weight: 600;
-    user-select: none;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    text-decoration: none;
+}
+
+.navigation-button-feedback {
+    width: 90px;
+    height: 30px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 7.5px;
+    gap: 7.5px;
+    background: transparent;
+    border: 0.75px solid #3658C1;
+    border-radius: 4px;
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    text-decoration: none;
 }
 
 .selected-button,
 .navigation-button:hover {
     background: #3658C1;
     border: 0.75px solid #3658C1;
-    border-radius: 15px;
     color: white;
     cursor: pointer;
 }
@@ -328,117 +354,123 @@
 
 .about,
 .skills {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 0px 22.5px;
-    gap: 20px;
-    width: 900px;
-    height: 100%;
-    background: #FFFFFF;
-    border-radius: 37.5px;
-    flex: none;
-    order: 0;
-    flex-grow: 0;
-    box-sizing: border-box;
-    box-shadow: 0px 3px 7.5px rgba(0, 0, 0, 0.25);
+box-sizing: border-box;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+padding: 0px 25px;
+width: 1100px;
+background: #FFFFFF;
+border: 1px solid #3658C1;
+box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.25);
+border-radius: 8px;
 }
 
 .about-title,
 .skills-title {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-    padding: 0px 20px;
-    gap: 7.5px;
-    height: 40px;
-    flex: none;
-    order: 0;
-    align-self: stretch;
-    flex-grow: 0;
-
-    font-family: 'Rubik';
-    font-style: normal;
-    font-weight: 600;
-    color: #000000;
-    margin: 0;
-    text-align: left;
+width: 100%;
+font-family: 'Rubik';
+font-style: normal;
+font-weight: 600;
+font-size: 18px;
+line-height: 21px;
+display: flex;
+align-items: center;
+color: #000000;
+margin: 0;
+margin-top: 15px;
+margin-bottom: 10px;
 }
 
 .about-description,
 .skills-description {
+width: 100%;
+font-family: 'Roboto', sans-serif;
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 18px;
+display: flex;
+align-items: center;
+color: #000000;
+margin: 0;
+margin-bottom: 10px;
 
-    font-family: 'Rubik';
-    font-style: normal;
-    font-weight: 300;
-
-    color: #000000;
-    padding: 0;
-    margin: 0;
 }
 
 .about-input {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    padding: 0px;
-    width: 100%;
-    min-height: 50px;
-    background: #FFFFFF;
+box-sizing: border-box;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: flex-start;
+padding: 5px 10px;
+gap: 8px;
+width: 100%;
+border: 0.75px solid #000000;
+border-radius: 4px;
 
-    flex: none;
-    align-self: stretch;
-    flex-grow: 0;
-    resize: none;
-    font-family: 'Rubik';
-    font-style: normal;
-    font-weight: 300;
-
-    color: #000000;
-    padding: 10px 10px;
-    box-sizing: border-box;
-    border-radius: 20px;
-    overflow: hidden;
-    margin-bottom: 20px;
+font-family: 'Roboto', sans-serif;
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 18px;
+color: #000000;
+margin-bottom: 15px;
+resize: none;
 }
 
 .save-button {
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 3.75px 7.5px;
-
-    background: #FFFFFF;
-    border: 0.75px solid #000000;
-    border-radius: 22.5px;
-
-    font-family: 'Martel';
-    font-style: normal;
-    font-weight: 250;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    background: url(/static/save-icon.png) no-repeat 5px;
-    background-size: 20px 20px;
-    padding-left: 30px;
-    padding-right: 10px;
-    margin-bottom: 20px;
-    cursor: pointer;
-    user-select: none;
+all: initial;    
+padding: 5px 10px 5px 27px;
+background: url(/static/save-icon.svg) no-repeat;
+background-size: 12px 12px;
+background-position-y:center;
+background-position-x: 10px;
+font-family: 'Rubik';
+font-style: normal;
+font-weight: 400;
+font-size: 12px;
+line-height: 14px;
+display: flex;
+align-items: center;
+text-align: center;
+color: #000000;
+box-sizing: border-box;
+border: 1px solid #000000;
+border-radius: 25px;
+margin-bottom: 15px;
 }
 
-.save-button:hover, .edit-profile-button:hover, .save-profile-button:hover, .add-language-button:hover, .remove-language-button:hover {
+.add-language-button{
+    width: 20px;
+    height: 20px;
+display: flex;
+align-items: center;
+text-align: center;
+box-sizing: border-box;
+background: url(/static/add-icon.svg) no-repeat;
+background-size: 20px 20px;
+background-position-y:center;
+background-position-x: center;
+}
+
+.add-language-button:hover, .remove-language-button:hover{
+    filter: brightness(60%) saturate(60%);
+}
+
+.add-language-button:active, .remove-language-button:hover{
+    filter: brightness(10%) saturate(10%);
+}
+
+.save-button:hover, .edit-profile-button:hover, .save-profile-button:hover, #avatar_upload_button:hover {
     background-color: #f0f0f0;
     border-color: #555;
     color: #333;
 }
 
-.save-button:active, .edit-profile-button:active, .save-profile-button:active, .add-language-button:active, .remove-language-button:active {
+.save-button:active, .edit-profile-button:active, .save-profile-button:active, #avatar_upload_button:active {
     background-color: #ccc;
     border-color: #333;
     color: #000;
@@ -453,21 +485,22 @@ main {
 }
 
 .profile-box div[contenteditable=true], .edit-language, .edit-level {
-    border: none; 
-    border-bottom: 1px solid #000; 
+    border: none;
+    border-bottom: 1px solid #3659c159;
     background-color: transparent; 
     outline: none;
 }
 
 .profile-box .name-surname-edit-container > div, .name-surname-edit-container div{
-    font-family: 'Rubik';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 27px;
-    margin: 0;
-    min-width: auto;
-    width: auto;
-    margin-right: 0.3em;
+font-family: 'Roboto', sans-serif;
+font-style: normal;
+font-weight: 400;
+font-size: 26px;
+line-height: 31px;
+display: flex;
+align-items: center;
+color: #000000;
+margin-right: 0.3em;
 }
 
 
@@ -478,6 +511,7 @@ main {
 
 .add-language-container{
     display:flex;
+    align-items:center;
     gap: 15px;
 }
 
@@ -492,7 +526,15 @@ main {
 }
 
 .remove-language-button{
-    margin-left: 10px;
+margin-left: 10px;
+box-sizing: border-box;
+width: 20px;
+height: 20px;
+background-image: url('/static/cross-circle-language-icon.svg'); 
+background-position: center center; 
+background-repeat: no-repeat; 
+background-size: 20px 20px;
+cursor: pointer;
     /* display: none; */
 }
 
@@ -513,3 +555,53 @@ form{
     display: flex;
     font-size: 16px;
 }
+
+.add-language-container span.select2-container {
+    width: 200px !important;
+  }
+
+  .add-language-container span.select2-container:last-of-type {
+    width: 70px !important;
+  }
+
+
+  .select2-container--default .select2-results>.select2-results__options{
+    font-family: 'Roboto', sans-serif;
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 17px;
+color: #6C6C6C;
+  }
+
+  #save-about-button, #save-skills-button{
+    display: none;
+  }
+  
+  #avatar_form{
+    width: 100%;
+  }
+
+  #avatar_upload_button{
+all: initial;    
+padding: 5px 10px 5px 27px;
+background: url(/static/add-project-icon.svg) no-repeat;
+background-size: 12px 12px;
+background-position-y:center;
+background-position-x: 10px;
+font-family: 'Rubik';
+font-style: normal;
+font-weight: 400;
+font-size: 12px;
+line-height: 14px;
+display: flex;
+align-items: center;
+text-align: center;
+color: #000000;
+box-sizing: border-box;
+border: 1px solid #000000;
+border-radius: 25px;
+margin: 0 auto;
+  }
+
+  

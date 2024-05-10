@@ -84,3 +84,20 @@ function submit(login, name, surname, password, repeat)
     }, 'json');
      
 }
+
+function showPassword()
+{
+    let passwordInput = document.getElementById('password');
+    let confirmPasswordInput = document.getElementById('confirm-password');
+    let eyeIcon = document.querySelector('.eye-password');
+
+    if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        confirmPasswordInput.type = 'text';
+        eyeIcon.classList.add('password-shown');
+    } else {
+        passwordInput.type = 'password';
+        confirmPasswordInput.type = 'password';
+        eyeIcon.classList.remove('password-shown');
+    }
+}

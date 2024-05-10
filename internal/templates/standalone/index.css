@@ -10,7 +10,11 @@ body {
     flex-direction: column;
     min-height: 100vh;
     min-height: 100svh;
-    font-size: 18px;
+font-family: 'Roboto', sans-serif;
+font-size: 16px;
+line-height: 19px;
+color: #000000;
+
 }
 
 main {
@@ -20,10 +24,10 @@ main {
 }
 
 .hero {
-    background: url('../static/hero.png') no-repeat;
+    background: url('../../static/hero.png') no-repeat;
     background-size: contain;
     background-position: center;
-    width: 1080px;
+    width: 1100px;
     height: 565px;
 }
 
@@ -33,90 +37,273 @@ main {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding: 7.5px;
-    gap: 7.5px;
-    width: 1080px;
-    flex: none;
-    order: 2;
-    flex-grow: 0;
+    width: 1100px;
     box-sizing: border-box;
+    margin: 0 auto;
+    gap: 40px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .earth-picture {
-    width: 320px;
-    height: 320px;
+    width: 340px;
+    height: 340px;
 }
 
 .welcome-text-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 45px 7.5px 7.5px;
     gap: 15px;
-
     width: 530px;
-    height: 320px;
-
-    flex: none;
-    order: 1;
-    flex-grow: 0;
-
+    height: 340px;
+    padding-top: 45px;
+    box-sizing:border-box;
 }
 
 .welcome-text-title {
-
-    width: 430px;
-    height: 68px;
-
-    font-family: 'Rubik';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 24px;
-    line-height: 140%;
-    color: #000000;
-    text-align: center;
-    margin: 0;
-
+width: 455px;
+height: 68px;
+font-family: 'Rubik';
+font-style: normal;
+font-weight: 700;
+font-size: 24px;
+line-height: 140%;
+color: #000000;
+margin: 0;
+text-align: center;
 }
 
 .welcome-text {
-    width: 455px;
-    height: 88px;
+width: 455px;
+height: 88px;
+font-size: 18px;
+line-height: 22px;
+display: flex;
+align-items: center;
+color: #000000;
+margin: 0;
+font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  font-style: normal;
 
-    font-family: 'Rubik';
-    font-style: normal;
-    font-weight: 300;
-    font-size: 18px;
-    line-height: 22px;
-    color: #000000;
-    margin: 0;
 }
 
-.welcome-text-title span {
+.welcome-text-title span, .contact-us-description span {
     color: #3658C1;
 }
 
 .signup-button {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-
-    width: 180px;
-    height: 40px;
+    padding: 10px 20px;
+font-family: 'Rubik';
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+line-height: 21px;
+display: flex;
+color: #FFFFFF;
     background: #3658C1;
-    box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.25);
-    border-radius: 3.75px;
-    font-family: 'Rubik';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 15px;
-    line-height: 18px;
-    box-sizing: border-box;
+    box-shadow: 0px 2.30769px 2.30769px rgba(0, 0, 0, 0.25);
+    border-radius: 4px;
     text-decoration: none;
-    color: white;
 }
 
 .signup-button:hover {
     background-color: #1d3c7d;
 }
+
+.section-2{
+box-sizing: border-box;
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: flex-start;
+padding: 40px 0px;
+gap: 20px;
+border-top: 0.75px solid #3658C1;
+width: 100%;
+}
+
+.advantage-container{
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+padding: 20px;
+gap: 10px;
+width: 250px;
+box-sizing: border-box;
+}
+
+.advantage-image{
+    width: 140px;
+}
+
+.advantage-title{
+width: 100%;
+font-family: 'Rubik';
+font-style: normal;
+font-weight: 700;
+font-size: 18px;
+line-height: 27px;
+text-align: center;
+color: #3658C1;
+margin: 0;
+}
+
+.advantage-description{
+width: 100%;
+font-family: 'Roboto', sans-serif;
+font-style: normal;
+font-weight: 300;
+font-size: 16px;
+line-height: 19px;
+text-align: center;
+color: #000000;
+margin: 0;
+}
+
+.section-3{
+box-sizing: border-box;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+padding: 40px 0px;
+gap: 20px;
+border-top: 0.75px solid #3658C1;
+}
+
+.how-it-works-title{
+font-family: 'Rubik';
+font-style: normal;
+font-weight: 700;
+font-size: 24px;
+line-height: 34px;
+color: #000000;
+margin: 0;
+}
+
+.how-it-works-container{
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 0px;
+gap: 75px;
+}
+
+.how-it-works-card{
+box-sizing: border-box;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+padding: 15px 10px;
+gap: 10px;
+width: 240px;
+border: 2px dashed #3658C1;
+box-shadow: 3.75px 3.75px 7.5px rgba(0, 0, 0, 0.25);
+}
+
+.step-container{
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 0px;
+gap: 5px;
+}
+
+.step-container p{
+font-family: 'Rubik';
+font-style: normal;
+font-weight: 700;
+font-size: 15px;
+line-height: 18px;
+text-align: center;
+color: #000000;
+margin: 0;
+}
+
+.step-circle{
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+padding: 0px;
+width: 25px;
+height: 25px;
+background: #3658C1;
+border-radius: 50%;
+font-family: 'Rubik';
+font-style: normal;
+font-weight: 700;
+font-size: 18px;
+line-height: 21px;
+color: #FFFFFF;
+}
+
+.how-it-works-image{
+    width: 150px;
+    height: 150px;
+}
+
+.step-description{
+    margin: 0;
+    width: 100%;
+font-family: 'Roboto', sans-serif;
+font-style: normal;
+font-weight: 300;
+font-size: 16px;
+line-height: 19px;
+text-align: center;
+color: #000000;
+margin-bottom: 20px;
+}
+
+.section-4{
+box-sizing: border-box;
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: flex-start;
+gap: 10px;
+border-top: 0.75px solid #3658C1;
+padding: 10px 0;
+}
+
+.contact-us-container{
+display: flex;
+flex-direction: column;
+align-items: center;
+gap: 15px;
+width: 530px;
+margin-top: 45px;
+}
+
+.contact-us-image{
+    width: 230px;
+}
+
+.contact-us-title{
+font-family: 'Rubik';
+font-style: normal;
+font-weight: 700;
+font-size: 24px;
+line-height: 34px;
+color: #000000;
+margin: 0;
+}
+
+.contact-us-description{
+font-family: 'Roboto', sans-serif;
+font-style: normal;
+font-weight: 300;
+font-size: 16px;
+line-height: 19px;
+color: #000000;
+width: 450px;
+margin: 0;
+}
+

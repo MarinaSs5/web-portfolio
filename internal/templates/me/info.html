@@ -5,20 +5,18 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Профиль</title>
-  <style>
-    {% include 'global/style.css' %}
-    {% include 'me/info.css' %}
-  </style>
   <!--link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="style-header.css">
   <link rel="stylesheet" href="style-footer.css">
   <link rel="stylesheet" href="info-style.css"-->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
-    rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet">
+    <style>
+      {% include 'global/style.css' %}
+      {% include 'me/info.css' %}
+    </style>
 </head>
 
 <body>
@@ -42,12 +40,18 @@
       <div class="profile-box">
         <div>
         <img class="profile-photo-large" src="/me/{{profile_id}}/avatar">
-        <div class="add-avatar-container">
+        <!-- <div class="add-avatar-container">
           <form id="avatar_form" enctype="multipart/form-data">
             <input id="avatar_input" name="avatar" type="file" onchange="file_updated(this)">
           </form>
           <button id="avatar_upload_button" hidden onclick="update_avatar($('#avatar_form'))">Выгрузить</button>
-        </div>
+        </div> -->
+        <div class="add-avatar-container">
+          <form id="avatar_form" enctype="multipart/form-data">
+              <input id="avatar_input" name="avatar" type="file" style="display: none;" onchange="file_updated()">
+              <button type="button" id="avatar_upload_button" onclick="triggerFileInput()">Добавить фото</button>
+          </form>
+      </div>
         </div>
         <div class="profile-info">
           <div class="profile-name-info">
@@ -57,7 +61,7 @@
             </div>
           </div>
           <div class="profile-main-info">
-            <div class="profile-name-text" id="edit-profile-specialty" placeholder="Вашу профессия...">{{profile_specialty}}</div>
+            <div class="profile-name-text profession-icon" id="edit-profile-specialty" placeholder="Вашу профессия...">{{profile_specialty}}</div>
             <div class="profile-name-text city-icon" id="edit-profile-city" placeholder="Место жительства...">{{profile_city}}</div>
             <div class="profile-name-text job-icon" id="edit-profile-job" placeholder="Место работы...">{{profile_job}}</div>
           </div>
@@ -69,7 +73,7 @@
               <option value="Авадхи">Авадхи</option>
               <option value="Азербайджанский">Азербайджанский</option>
               <option value="Амхарский">Амхарский</option>
-              <option value="Английский" selected>Английский</option>
+              <option value="Английский">Английский</option>
               <option value="Арабский">Арабский</option>
               <option value="Ассамский">Ассамский</option>
               <option value="Белорусский">Белорусский</option>
@@ -138,7 +142,7 @@
               <option value="Ярбиа">Ярбиа</option>
           </select>
           
-            <select class="edit-level">
+            <select class="edit-level" id="languageLevel">
               <option value="A1">A1</option>
               <option value="A2">A2</option>
               <option value="B1">B1</option>
@@ -146,7 +150,7 @@
               <option value="C1">C1</option>
               <option value="C2">C2</option>
             </select>
-            <div onclick="add_language($('.edit-language').val(), $('.edit-level').val())" class="add-language-button">Добавить язык</div>
+            <div onclick="add_language($('.edit-language').val(), $('.edit-level').val())" class="add-language-button"></div>
             </div>
             <ul class="profile-language-list" id="edit-language-list">
             </ul>
@@ -158,9 +162,9 @@
           </div>
           <div class="profile-buttons">
             {% if own %}
-            <a class="edit-profile-button" onclick="make_editable_elements()">Редактировать профиль</a>
+            <button class="edit-profile-button" onclick="make_editable_elements()">Редактировать</button>
             {% endif %}
-            <a class="save-profile-button save-profile-button" style="display: none;" onclick="save_profile_info()">Сохранить изменения</a>
+            <button class="save-profile-button save-profile-button" style="display: none;" onclick="save_profile_info()">Сохранить</button>
           </div>
         </div>
           
@@ -169,7 +173,7 @@
     <section class="navigation-buttons-container">
       <div class="navigation-buttons">
         <a class="navigation-button-profile navigation-button selected-button">Профиль</a>
-        <a class="navigation-button-project navigation-button">Проекты</a>
+        <a class="navigation-button-project navigation-button" href="/me/{{profile_id}}/projects">Проекты</a>
         <a class="navigation-button-education navigation-button">Образование и достижения</a>
         <a class="navigation-button-feedback navigation-button">Отзывы</a>
       </div>
@@ -180,10 +184,10 @@
         {% if own %}
                 <p class="about-description">Представьте себя коротко, используя несколько предложений. Укажите основные аспекты
           вашей профессиональной деятельности и опыт работы.</p>
-          <textarea class="about-input" id="about-input">{{ghjfgjfg}}</textarea>
-          <a class="save-button">Сохранить</a>
+          <textarea class="about-input" id="about-input">{{profile_about}}</textarea>
+          <button id="save-about-button" class="save-button" onclick="save_profile_info()">Сохранить</button>
           {% else %}
-          <textarea readonly class="about-input" id="about-input">{{ghjfgjfg}}</textarea>
+          <textarea readonly class="about-input" id="about-input">{{profile_about}}</textarea>
         {% endif %}
       </div>
     </section>
@@ -193,10 +197,10 @@
         {% if own %}
         <p class="skills-description">Добавьте свои ключевые навыки, разделяя их запятыми. Это поможет другим
           пользователям найти вас при поиске по навыкам и потребностям.</p>
-        <textarea class="about-input" id="skills-input">{{ghjfgjfg}}</textarea>
-        <a class="save-button">Сохранить</a>
+        <textarea class="about-input" id="skills-input">{{profile_skill}}</textarea>
+        <button id="save-skills-button" class="save-button" onclick="save_profile_info()">Сохранить</button>
         {% else %}
-        <textarea readonly class="about-input" id="skills-input">{{ghjfgjfg}}</textarea>
+        <textarea readonly class="about-input" id="skills-input">{{profile_skill}}</textarea>
         {% endif %}
       </div>
     </section>
@@ -207,5 +211,7 @@
     {% include 'global/script.js' %}
     {% include 'me/info.js' %}
   </script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
 </body>
 </html>

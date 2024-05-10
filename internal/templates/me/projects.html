@@ -1,32 +1,86 @@
-Профиль: {{profile_id}} {{profile_name}} {{profile_surname}}
-<br>
-Проекты ({{profile_projects|length}}):<br>
-{% for proj in profile_projects %} {{proj[1]}} ({{proj[0]}}) <button onclick="remove_project('{{proj[0]}}')">Удалить</button><br>
-{% endfor %}
-<br>
-<input id="pname" type="text">
-<button onclick="add_project($('#pname').val())">Добавить</button>
+<!DOCTYPE html>
+<html lang="ru">
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-    function add_project(name)
-    {
-        $.post('/me/{{profile_id}}/projects/add',
-        {
-            'name': name,
-        },
-        function(response)
-        {
-        }, 'json');    
-    }
-    function remove_project(id)
-    {
-        $.post('/me/{{profile_id}}/projects/remove',
-        {
-            'id': id,
-        },
-        function(response)
-        {
-        }, 'json');    
-    }
-</script>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Проекты</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+  <style>
+    {% include 'global/style.css' %}
+    {% include 'me/projects.css' %}
+  </style>
+</head>
+
+<body>
+  {% include 'global/header.html' %}
+  <!-- <header>
+    <div class="main-header">
+      <a href="/"><img src="../static/logo.png" class="logo-picture"></a>
+      <input class="search-field" type="text" id="search" placeholder="Найти пользователя">
+      <div class="header-button-container">
+        <div class="profile-name-container">
+          <p class="profile-name-text-header">Name Surname</p>
+          <img class="profile-photo-small" src="../static/profile-photo.png">
+        </div>
+        <a class="logout-button" href="/logout">Выйти</a>
+      </div>
+    </div>
+    </div>
+  </header> -->
+  {% set own = user_id == profile_id %}
+  <main>
+    <section class="projects-user-info-container">
+        <div class="projects-user-info">
+            <img class="profile-photo-projects-user-info" src="/me/{{profile_id}}/avatar">
+            <p class="projects-user-name-text">{{profile_name}} {{ profile_surname }}</p>
+        </div>
+      </section>
+      <section class="navigation-buttons-container">
+        <div class="navigation-buttons">
+          <a class="navigation-button-profile navigation-button" href="/me/{{profile_id}}/info">Профиль</a>
+          <a class="navigation-button-project navigation-button selected-button">Проекты</a>
+          <a class="navigation-button-education navigation-button">Образование и достижения</a>
+          <a class="navigation-button-feedback navigation-button">Отзывы</a>
+        </div>
+      </section>
+      <section class="projects-container">
+        <div class="projects">
+          <p class="projects-title">Проекты</p>
+          {% if own %}
+          <button class="add-project-button" onclick="add_project()">Добавить проект</button>
+          {% endif %}
+          <div class="projects-list">
+            <!-- <div class="projects-item">
+              <div class="delete-button">&#10006;</div>
+              <img class="project-img" src="../static/project-default.png">
+              <p class="project-title">Название sssssssssssssssssssssssssssssssпроекта</p>
+              <p class="project-description">Современные технологии достигли такого уровня, что семантический разбор внешних противодействий прекрасно подходит для реализации существующих финансовых и административных условий. Значимость этих проблем настолько очевидна, что высококачественный прототип будущего проекта предполагает независимые способы реализации благоприятных перспектив. В своём стремлении повысить качество жизни, они забывают, что повышение уровня гражданского сознания требует анализа вывода текущих активов.</p>
+            </div> -->
+            {% for project in profile_projects %}
+            <div id="project-item-{{ project[0] }}" class="projects-item">
+                <a class="project-link" href="/project/{{ project[0] }}">
+                    <img class="project-img" src="/project/{{ project[0] }}/thumbnail">
+                    <p class="project-title">{{ project[1] }}</p>
+                </a>
+                <div class="delete-button" onclick="remove_project(event, '{{ project[0] }}'); return false;">&#10006;</div>
+            </div>
+            {% endfor %}
+            
+
+          </div>
+        </div>
+      </section>
+  </main>
+  {% include 'global/footer.html' %}
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script> 
+    {% include 'global/script.js' %}
+    {% include 'me/projects.js' %}
+  </script>
+
+</body>
+
+</html>

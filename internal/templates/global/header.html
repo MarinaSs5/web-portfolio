@@ -1,24 +1,35 @@
 <header>
   <div class="main-header">
     {% if user_id %}
-    <a href="/"><img src="/static/logo.png" class="logo-picture"></a>
-    <input class="search-field" type="text" id="search" placeholder="Найти пользователя">
-    <div class="header-button-container">
-      <a href="/me/{{user_id}}/info">
-      <div class="profile-name-container">
-        <p class="profile-name-text-header">{{user_name}} {{user_surname}}</p>
-        <img class="profile-photo-small" src="/me/{{user_id}}/avatar">
+    <a href="/"><img src="../../static/logo.png" class="logo-picture"></a>
+      <div class="search-container">
+      <input class="search-field" type="text" id="search" placeholder="Найти пользователя...">
+      <div class="hint-icon tooltip">
+        <span class="tooltiptext">Введите запрос и нажите <b>Enter</b></span>
       </div>
-      </a>
-      <a class="logout-button" href="/sign/out">Выйти</a>
-    </div>
-    {% else %}
-      <a href="/"><img src="../static/logo.png" class="logo-picture"></a>
-      <input class="search-field" type="text" id="search" placeholder="Найти пользователя">
+      </div>
       <div class="header-button-container">
-        <a href="/sign/up" class="register-button">Зарегистрироваться</a>
-        <a href="/sign/in" class="login-button">Войти</a>
+        <a href="/me/{{user_id}}/info">
+        <div class="profile-name-container">
+          <p class="profile-name-text-header">{{user_name}} {{user_surname}}</p>
+          <img class="profile-photo-small" src="/me/{{user_id}}/avatar">
+
+        </div>
+        </a>
+        <a class="logout-button" href="/sign/out">Выйти</a>
       </div>
+    {% else %}
+    <a href="/"><img src="../static/logo.png" class="logo-picture"></a>
+    <div class="search-container">
+      <input class="search-field" type="text" id="search" placeholder="Найти пользователя...">
+      <div class="hint-icon tooltip">
+        <span class="tooltiptext">Введите запрос и нажите <b>Enter</b></span>
+      </div>
+      </div>
+    <div class="header-button-container">
+      <a href="/sign/up" class="register-button">Зарегистрироваться</a>
+      <a href="/sign/in" class="login-button">Войти</a>
+    </div>
     {% endif %}
   </div>
   <style>

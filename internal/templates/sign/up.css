@@ -1,22 +1,17 @@
 .sign-up-button{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    width: 170px;
-    height: 35px;
-    background: #3658C1;
-    box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.25);
-    border-radius: 3.75px;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
-    cursor: pointer;
+    padding: 7px 20px;
     font-family: 'Rubik';
     font-style: normal;
-    font-weight: 700;
-    font-size: 15px;
-    line-height: 18px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
     color: #FFFFFF;
-    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #3658C1;
+    box-shadow: 0px 2.30769px 2.30769px rgba(0, 0, 0, 0.25);
+    border-radius: 4px;
 }
 
 .sign-up-button:hover {
@@ -30,7 +25,6 @@ main{
     flex-grow: 1;
     display: flex;
     flex-direction: column;
-    padding-top: 50px;
 }
 
 .sign-in{
@@ -42,46 +36,80 @@ main{
 }
 
 .sign-in-box{
-    padding-top: 30px;
-    display: grid;
-    grid-template-columns: 120px 400px; 
-    grid-template-rows: repeat(40px); 
-    align-items: center; 
-    justify-content: center;
-    width: 900px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 0px 0px;
+    gap: 35px;
+    width: 1100px;
+    height: 555px;
     background: #FFFFFF;
-    border-radius: 20px;
-    box-shadow: 0px 3px 7.5px rgba(0, 0, 0, 0.25);
-    height: 500px;
-    padding-bottom: 10px;
-}
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    box-sizing: border-box;
+    background-image: url('../../static/signup-image.png'); 
+    background-position: bottom right; 
+    background-repeat: no-repeat; 
+    background-size: 35%;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    
+    }
+    
+    
+    
+    .sign-in-box input{
+    all: unset;
+    box-sizing:border-box;
+    width: 400px;
+    height: 30px;
+    background: #FFFFFF;
+    border: 0.75px solid rgba(0, 0, 0, 0.25);
+    box-shadow: 0.75px 0.75px 1.5px rgba(0, 0, 0, 0.25);
+    border-radius: 4px;
+    padding: 4.5px 8px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 17px;
+    }
+    
+    .sign-in-box label{
+        position: absolute;
+        top: -12px;
+        left: 10px;
+        background: #fff;
+        padding: 0 5px;
+        font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 17px;
+    }
+    
+    .input-box{
+        position: relative;
+    }
+    
+    .eye-password{
+        position: absolute;
+        background-image: url('../../static/opened-eye.svg'); 
+        background-position: center center; 
+        background-repeat: no-repeat; 
+        background-size: 15px 15px;
+        background-color: #FFFFFF;
+        width: 15px;
+        height: 15px;
+        right: -25px;
+        top: 8px;
+        cursor: pointer;
+    }
 
-.sign-in-box input{
-margin: 0 auto;
-width: 100%;
-height: 30px;
-background: #F9F9F9;
-border: 0.75px solid rgba(0, 0, 0, 0.03);
-box-shadow: 0.75px 0.75px 1.5px rgba(0, 0, 0, 0.25);
-border-radius: 8px;
-}
-
-.sign-in-box label{
-margin: 0 auto;
-font-family: 'Rubik';
-font-style: normal;
-font-weight: 400;
-line-height: 14px;
-align-items: right;
-text-align: left;
-color: #000000;
-}
-
-.sign-in-box .sign-up-button{
-    grid-column: span 2;
-    justify-self: center;
-}
-
+    .password-shown{
+        background-image: url('/static/eye-crossed.svg');  
+    }
+    
   
   
 

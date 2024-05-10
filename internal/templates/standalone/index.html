@@ -5,11 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>LingFolio - Главная</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
-    rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
-    rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+
   <style>
     {% include 'global/style.css' %}
     {% include 'standalone/index.css' %}
@@ -34,9 +32,62 @@
       <img src="/static/earth.png" class="earth-picture">
       <div class="welcome-text-container">
         <h1 class="welcome-text-title">Сделайте мир доступным на вашем языке с <span>LingFOLIO</span></h1>
-        <p class="welcome-text">Добро пожаловать на вашу платформу для хранения и демонстрации переводческого мастерства! Создайте свое уникальное портфолио переводов и представьте его миру.</p>
+        <p class="welcome-text">Добро пожаловать ныыа вашу платформу для хранения и демонстрации переводческого мастерства! Создайте свое уникальное портфолио переводов и представьте его миру.</p>
         <a class="signup-button" href="/signup">Создать портфолио</a>
       </div>
+    </section>
+    <section class="section-2">
+      <div class="advantage-container">
+        <img class="advantage-image" src="static/wide-coverage.png">
+        <p class="advantage-title">Широкий охват языков</p>
+        <p class="advantage-description">Возможность показать свои навыки в переводе на различные языки мира.</p>
+      </div>
+      <div class="advantage-container">
+        <img class="advantage-image" src="/static/interaction.png">
+        <p class="advantage-title">Взаимодействие с сообществом</p>
+        <p class="advantage-description">Обеспечьте легкость в общении и взаимодействии с другими переводчиками.</p>
+      </div>
+      <div class="advantage-container">
+        <img class="advantage-image" src="/static/promotion.png">
+        <p class="advantage-title">Продвижение своего бренда</p>
+        <p class="advantage-description">Продвигайте свой бренд и развивайте свою карьеру.</p>
+      </div>
+    </section>
+    <section class="section-3">
+      <p class="how-it-works-title">Как это работает?</p>
+      <div class="how-it-works-container">
+        <div class="how-it-works-card">
+          <div class="step-container">
+            <p>Шаг</p>
+            <div class="step-circle">1</div>
+          </div>
+          <img src="/static/step1.png" class="how-it-works-image">
+          <p class="step-description">Зарегистрируйтесь на LingFOLIO и создайте свое уникальное портфолио.</p>
+        </div>
+        <div class="how-it-works-card">
+          <div class="step-container">
+            <p>Шаг</p>
+            <div class="step-circle">2</div>
+          </div>
+          <img src="/static/step2.png" class="how-it-works-image">
+          <p class="step-description">Загрузите свои переводы и организуйте их в удобном формате.</p>
+        </div>
+        <div class="how-it-works-card">
+          <div class="step-container">
+            <p>Шаг</p>
+            <div class="step-circle">3</div>
+          </div>
+          <img src="/static/step3.png" class="how-it-works-image">
+          <p class="step-description">Покажите свое мастерство миру и начните привлекать новых клиентов.</p>
+        </div>
+      </div>
+    </section>
+    <section class="section-4">
+      <div class="contact-us-container">
+        <p class="contact-us-title">Возникли вопросы?</p>
+        <p class="contact-us-description">У вас возникли вопросы или нужна помощь? Наша команда поддержки всегда готова помочь вам. Свяжитесь с нами по адресу <span>support@lingfolio.com</span></p>
+      </div>
+      <img class="contact-us-image" src="/static/support.png">
     </section>
   </main>
   {% include 'global/footer.html' %}

@@ -19,3 +19,17 @@ function submit(login, password)
             alert('Неизвестная ошибка.');
     }, 'json');
 }
+
+function showPassword()
+{
+    let passwordInput = document.getElementById('password');
+    let eyeIcon = document.querySelector('.eye-password');
+
+    if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        eyeIcon.classList.add('password-shown');
+    } else {
+        passwordInput.type = 'password';
+        eyeIcon.classList.remove('password-shown');
+    }
+}

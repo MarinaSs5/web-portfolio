@@ -24,7 +24,7 @@ function add_language_html(language, level)
     (`\
     <li id="language_${languages_count}">\
         <span>${language} ${level}</span>\
-        <button class="remove-language-button" onclick="remove_language(this.parentElement.id)">Удалить</button>\
+        <div class="remove-language-button" onclick="remove_language(this.parentElement.id)"></div>\
     </li>\
     `);
     ++languages_count;
@@ -73,45 +73,43 @@ function remove_language(id)
 
 
 
-
-
-let file_valid = false;
-function update_avatar(form_id)
-{
-    if(!file_valid)
-        return;
-    $.ajax(
-    {
-        url: '/me/{{profile_id}}/info/newavatar',
-        type: 'POST',
-        data: new FormData($(form_id)[0]),
-        cache: false,       
-        processData: false,  
-        contentType: false,
-        success: function(response)
-        {
-            $('#avatar_upload_button').attr('hidden', true);
-        }
-    });
+function triggerFileInput() {
+    document.getElementById('avatar_input').click(); // Симуляция клика по скрытому input
 }
-function file_updated(input)
-{
+
+function file_updated() {
+    let input = document.getElementById('avatar_input');
     let file = input.files[0];
-    file_valid = false;
-    $('#avatar_upload_button').attr('hidden', true);
-    if(file.type != 'image/jpeg')
-    {
+    if (!file) return;
+
+    if (file.type !== 'image/jpeg') {
         alert('Файл должен быть изображением с расширением JPEG.');
         return;
     }
-    if(file.size > 1024*1024*2)
-    {
+    if (file.size > 1024 * 1024 * 2) { 
         alert('Размер файла не должен превышать 2 МБ.');
         return;
     }
-    file_valid = true;
-    $('#avatar_upload_button').attr('hidden', false);
+
+    update_avatar();
 }
+
+function update_avatar() {
+    let formData = new FormData(document.getElementById('avatar_form'));
+
+    $.ajax({
+        url: '/me/{{profile_id}}/info/newavatar',
+        type: 'POST',
+        data: formData,
+        cache: false,
+        processData: false,
+        contentType: false,
+        success: function(response) {
+            location.reload();
+        }
+    });
+}
+
 
 
 
@@ -166,8 +164,8 @@ function save_profile_info() {
         $("#edit-profile-mail").text(),
         $("#edit-profile-vk").text(),
         $("#edit-profile-tg").text(),
-        '',                                   // !!!
-        ''                                    // !!!
+        $("#about-input").val(),                                   // !!!
+        $("#skills-input").val()                                    // !!!
     );
 
     $("#edit-profile-name").attr("contenteditable", "false");
@@ -200,4 +198,63 @@ function save_profile_info() {
     $(".add-language-container").hide();
     $(".edit-profile-button").show();
     $(".save-profile-button").hide();
+    
+    $("#save-about-button").hide();
+    $("#save-skills-button").hide();
+
 }
+
+$(document).ready(function() {
+    $('#languageSelect').select2({
+        placeholder: "Выберите язык",
+        language: {
+            "noResults": function () {
+                return "Ничего не найдено";
+            }
+        }
+    });
+    $('#languageSelect').val(null).trigger('change');
+});
+
+$(document).ready(function() {
+    $('#languageLevel').select2({
+        placeholder: "Уровень",
+        language: {
+            "noResults": function () {
+                return "Ничего не найдено";
+            }
+        }
+    });
+    $('#languageSelect').val(null).trigger('change');
+});
+
+$(document).ready(function() {
+    $('#languageLevel').select2({
+        placeholder: "Уровень языка",
+        minimumResultsForSearch: Infinity
+    });
+});
+
+let textareaAbout = document.getElementById('about-input');
+let saveButtonAbout = document.getElementById('save-about-button');
+let originalContentAbout = textareaAbout.value;
+
+textareaAbout.addEventListener('input', function () {
+    if (textareaAbout.value !== originalContentAbout) {
+        saveButtonAbout.style.display = 'block'; 
+    } else {
+        saveButtonAbout.style.display = 'none'; 
+    }
+});
+
+let textareaSkills = document.getElementById('skills-input');
+let saveButtonSkills = document.getElementById('save-skills-button');
+let originalContentSkills = textareaSkills.value;
+
+textareaSkills.addEventListener('input', function () {
+    if (textareaSkills.value !== originalContentSkills) {
+        saveButtonSkills.style.display = 'block'; 
+    } else {
+        saveButtonSkills.style.display = 'none'; 
+    }
+});
