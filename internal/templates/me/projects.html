@@ -65,7 +65,9 @@
                     <img class="project-img" src="/project/{{ project[0] }}/thumbnail">
                     <p class="project-title">{{ project[1] }}</p>
                 </a>
+                {% if own %}
                 <div class="delete-button" onclick="remove_project(event, '{{ project[0] }}'); return false;">&#10006;</div>
+                {% endif %}
             </div>
             {% endfor %}
             

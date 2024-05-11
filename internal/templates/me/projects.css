@@ -26,6 +26,7 @@ border-radius: 0px 0px 8px 8px;
     width: 45px;
     height: 45px;
 border-radius: 4px;
+object-fit: cover;
 }
 
 .projects-user-name-text {
