@@ -28,12 +28,12 @@ def assign(user_id, user_password, verify):
 
 def check():
     if (not '0' in flask.session) or (not '1' in flask.session) or (not '2' in flask.session):
-        clear()
+        #clear()
         return None
 
     user_id = flask.session['0']
     if not database.user.exists(user_id):
-        clear()
+        #clear()
         return None
     
     user_sessions = []
@@ -46,7 +46,7 @@ def check():
             database.user.sessions_delete(user_id, s - offset)
             offset += 1
     if not user_sessions:
-        clear()
+        #clear()
         return None
 
     once_valid = False
@@ -58,7 +58,7 @@ def check():
                 once_valid = True
                 break
     if not once_valid:
-        clear()
+        #clear()
         return None
     
 
