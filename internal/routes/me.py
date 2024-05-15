@@ -98,6 +98,7 @@ def avatar(profile_id):
     avatar = database.user.avatar_read(profile_id)
     avatar.seek(0, os.SEEK_END)
     if avatar.tell() < 10:
+        flask.abort(404)
         with open(os.path.join(os.getcwd(), 'internal', 'static', 'profile-photo.png'), 'rb') as file:
             avatar = io.BytesIO(file.read())
     else:

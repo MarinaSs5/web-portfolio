@@ -61,6 +61,7 @@ def project_thumbnail(project_id):
     thumbnail = database.project.thumbnail_read(project_id)
     thumbnail.seek(0, os.SEEK_END)
     if thumbnail.tell() < 10:
+        flask.abort(404)
         with open(os.path.join(os.getcwd(), 'internal', 'static', 'project-default.png'), 'rb') as file:
             thumbnail = io.BytesIO(file.read())
     else:
