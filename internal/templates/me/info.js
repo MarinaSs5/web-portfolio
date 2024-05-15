@@ -105,7 +105,8 @@ function update_avatar() {
         processData: false,
         contentType: false,
         success: function(response) {
-            location.reload();
+            $('.profile-photo-large').attr('src', `/me/{{profile_id}}/avatar?${new Date().getTime()}`);
+            $('.profile-photo-small').attr('src', `/me/{{profile_id}}/avatar?${new Date().getTime()}`);
         }
     });
 }

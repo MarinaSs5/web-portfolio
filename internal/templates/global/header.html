@@ -1,7 +1,7 @@
 <header>
   <div class="main-header">
     {% if user_id %}
-    <a href="/"><img src="../../static/logo.png" class="logo-picture"></a>
+    <a href="/"><img src="/static/logo.png" class="logo-picture"></a>
       <div class="search-container">
       <input class="search-field" type="text" id="search" placeholder="Найти пользователя...">
       <div class="hint-icon tooltip">
@@ -19,7 +19,7 @@
         <a class="logout-button" href="/sign/out">Выйти</a>
       </div>
     {% else %}
-    <a href="/"><img src="../static/logo.png" class="logo-picture"></a>
+    <a href="/"><img src="/static/logo.png" class="logo-picture"></a>
     <div class="search-container">
       <input class="search-field" type="text" id="search" placeholder="Найти пользователя...">
       <div class="hint-icon tooltip">

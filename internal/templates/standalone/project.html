@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="style-header.css">
   <link rel="stylesheet" href="style-footer.css">
   <link rel="stylesheet" href="project-style.css"> -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
   <style>
     {% include 'global/style.css' %}
     {% include 'standalone/project.css' %}
@@ -63,8 +64,8 @@
             <div class="project-image-container">
               <img class="project-cover-img" src="/project/{{project_id}}/thumbnail">
               <form id="cover_form" enctype="multipart/form-data">
-                <input id="cover_input" name="thumbnail" type="file" style="display: none;" onchange="file_updated()">
-                <button type="button" id="add-project-cover-button" onclick="triggerFileInput()" class="add-project-cover-button">Прикрепить обложку</button>
+                <input id="cover_input" name="thumbnail" type="file" style="display: none;">
+                <button type="button" id="add-project-cover-button" class="add-project-cover-button">Прикрепить обложку</button>
               </form>
             </div>
             <div class="project-main-description">
@@ -73,40 +74,209 @@
               <p class="table-description-title">Описание проекта:</p>
               <div class="project-description">{{project_description}}</div>
               <p class="table-description-title">Язык оригинала:</p>
-              <div class="project-original-lang">{{project_original}}</div>
+              <div class="project-original-lang">
+                <select class="edit-language-original" id="languageSelectOriginal" hidden>
+                  <option value="Авадхи">Авадхи</option>
+                  <option value="Азербайджанский">Азербайджанский</option>
+                  <option value="Амхарский">Амхарский</option>
+                  <option value="Английский">Английский</option>
+                  <option value="Арабский">Арабский</option>
+                  <option value="Ассамский">Ассамский</option>
+                  <option value="Белорусский">Белорусский</option>
+                  <option value="Бенгальский">Бенгальский</option>
+                  <option value="Бходжпури">Бходжпури</option>
+                  <option value="Бирманский">Бирманский</option>
+                  <option value="Венгерский">Венгерский</option>
+                  <option value="Вьетнамский">Вьетнамский</option>
+                  <option value="Греческий">Греческий</option>
+                  <option value="Гуджарати">Гуджарати</option>
+                  <option value="Дакхни">Дакхни</option>
+                  <option value="Игбо">Игбо</option>
+                  <option value="Индонезийский">Индонезийский</option>
+                  <option value="Испанский">Испанский</option>
+                  <option value="Итальянский">Итальянский</option>
+                  <option value="Каннада">Каннада</option>
+                  <option value="Китайский">Китайский</option>
+                  <option value="Корейский">Корейский</option>
+                  <option value="Мадурский">Мадурский</option>
+                  <option value="Магахи">Магахи</option>
+                  <option value="Майтхили">Майтхили</option>
+                  <option value="Малагасийский">Малагасийский</option>
+                  <option value="Малайский">Малайский</option>
+                  <option value="Малаялам">Малаялам</option>
+                  <option value="Марвари">Марвари</option>
+                  <option value="Маратхи">Маратхи</option>
+                  <option value="Непальский">Непальский</option>
+                  <option value="Нидерландский">Нидерландский</option>
+                  <option value="Оромо">Оромо</option>
+                  <option value="Ория">Ория</option>
+                  <option value="Панджаби">Панджаби</option>
+                  <option value="Персидский">Персидский</option>
+                  <option value="Польский">Польский</option>
+                  <option value="Португальский">Португальский</option>
+                  <option value="Пушту">Пушту</option>
+                  <option value="Румынский">Румынский</option>
+                  <option value="Русский">Русский</option>
+                  <option value="Сараики">Сараики</option>
+                  <option value="Себуанский">Себуанский</option>
+                  <option value="Сербохорватский">Сербохорватский</option>
+                  <option value="Синдхи">Синдхи</option>
+                  <option value="Сингальский">Сингальский</option>
+                  <option value="Словакий">Словакий</option>
+                  <option value="Сунданский">Сунданский</option>
+                  <option value="Тагальский">Тагальский</option>
+                  <option value="Тайский">Тайский</option>
+                  <option value="Тамильский">Тамильский</option>
+                  <option value="Телугу">Телугу</option>
+                  <option value="Турецкий">Турецкий</option>
+                  <option value="Узбекский">Узбекский</option>
+                  <option value="Украинский">Украинский</option>
+                  <option value="Урду">Урду</option>
+                  <option value="Французский">Французский</option>
+                  <option value="Фула">Фула</option>
+                  <option value="Харьянви">Харьянви</option>
+                  <option value="Хауса">Хауса</option>
+                  <option value="Хинди">Хинди</option>
+                  <option value="Чванский">Чванский</option>
+                  <option value="Чешский">Чешский</option>
+                  <option value="Читтагонг">Читтагонг</option>
+                  <option value="Чхаттисгархи">Чхаттисгархи</option>
+                  <option value="Чжуанский">Чжуанский</option>
+                  <option value="Шона">Шона</option>
+                  <option value="Яванский">Яванский</option>
+                  <option value="Японский">Японский</option>
+                  <option value="Ярбиа">Ярбиа</option>
+              </select>
+              <span class="original-lang">{{project_original}}</span>
+            </div>
               <p class="table-description-title">Язык перевода:</p>
-              <div class="project-translation-lang">{{project_translation}}</div>
-              <p class="table-description-title">Ссылка:</p>
-              <a class="project-link"><div class="project-link-text"></div></a>
+              <div class="project-translation-lang">
+                <select class="edit-language-translation" id="languageSelectTranslation" hidden>
+                  <option value="Авадхи">Авадхи</option>
+                  <option value="Азербайджанский">Азербайджанский</option>
+                  <option value="Амхарский">Амхарский</option>
+                  <option value="Английский">Английский</option>
+                  <option value="Арабский">Арабский</option>
+                  <option value="Ассамский">Ассамский</option>
+                  <option value="Белорусский">Белорусский</option>
+                  <option value="Бенгальский">Бенгальский</option>
+                  <option value="Бходжпури">Бходжпури</option>
+                  <option value="Бирманский">Бирманский</option>
+                  <option value="Венгерский">Венгерский</option>
+                  <option value="Вьетнамский">Вьетнамский</option>
+                  <option value="Греческий">Греческий</option>
+                  <option value="Гуджарати">Гуджарати</option>
+                  <option value="Дакхни">Дакхни</option>
+                  <option value="Игбо">Игбо</option>
+                  <option value="Индонезийский">Индонезийский</option>
+                  <option value="Испанский">Испанский</option>
+                  <option value="Итальянский">Итальянский</option>
+                  <option value="Каннада">Каннада</option>
+                  <option value="Китайский">Китайский</option>
+                  <option value="Корейский">Корейский</option>
+                  <option value="Мадурский">Мадурский</option>
+                  <option value="Магахи">Магахи</option>
+                  <option value="Майтхили">Майтхили</option>
+                  <option value="Малагасийский">Малагасийский</option>
+                  <option value="Малайский">Малайский</option>
+                  <option value="Малаялам">Малаялам</option>
+                  <option value="Марвари">Марвари</option>
+                  <option value="Маратхи">Маратхи</option>
+                  <option value="Непальский">Непальский</option>
+                  <option value="Нидерландский">Нидерландский</option>
+                  <option value="Оромо">Оромо</option>
+                  <option value="Ория">Ория</option>
+                  <option value="Панджаби">Панджаби</option>
+                  <option value="Персидский">Персидский</option>
+                  <option value="Польский">Польский</option>
+                  <option value="Португальский">Португальский</option>
+                  <option value="Пушту">Пушту</option>
+                  <option value="Румынский">Румынский</option>
+                  <option value="Русский">Русский</option>
+                  <option value="Сараики">Сараики</option>
+                  <option value="Себуанский">Себуанский</option>
+                  <option value="Сербохорватский">Сербохорватский</option>
+                  <option value="Синдхи">Синдхи</option>
+                  <option value="Сингальский">Сингальский</option>
+                  <option value="Словакий">Словакий</option>
+                  <option value="Сунданский">Сунданский</option>
+                  <option value="Тагальский">Тагальский</option>
+                  <option value="Тайский">Тайский</option>
+                  <option value="Тамильский">Тамильский</option>
+                  <option value="Телугу">Телугу</option>
+                  <option value="Турецкий">Турецкий</option>
+                  <option value="Узбекский">Узбекский</option>
+                  <option value="Украинский">Украинский</option>
+                  <option value="Урду">Урду</option>
+                  <option value="Французский">Французский</option>
+                  <option value="Фула">Фула</option>
+                  <option value="Харьянви">Харьянви</option>
+                  <option value="Хауса">Хауса</option>
+                  <option value="Хинди">Хинди</option>
+                  <option value="Чванский">Чванский</option>
+                  <option value="Чешский">Чешский</option>
+                  <option value="Читтагонг">Читтагонг</option>
+                  <option value="Чхаттисгархи">Чхаттисгархи</option>
+                  <option value="Чжуанский">Чжуанский</option>
+                  <option value="Шона">Шона</option>
+                  <option value="Яванский">Яванский</option>
+                  <option value="Японский">Японский</option>
+                  <option value="Ярбиа">Ярбиа</option>
+              </select>
+                <span class="translation-lang">{{project_translation}}</span>
+              </div>
               <p class="table-description-title">Файл:</p>
               <div class="attach-file-container">
-                <a class="project-file-link"></a>
-                <button class="attach-file-button">Прикрепить файл</button>
-              </div>
+                <a target="_blank" class="project-file-link" id="project_file_link" href="/project/{{project_id}}/content">Файл проекта</a>
+                <form id="file_form" enctype="multipart/form-data">
+                    <input id="file_input" name="content" type="file" accept=".pdf" style="display: none;">
+                </form>
+                <a class="project-file-link" id="project_file_link" href="#" style="display: none;">Ссылка на файл</a>
+                <button type="button" class="attach-file-button" >Прикрепить файл</button>
+            </div>
             </div>
           </div>
-          <!-- <p class="project-title">Фрагмент перевода</p>
-          <div class="project-info-button-container">
-            <button class="add-translation-fragment-button">Добавить фрагмент перевода</button>
-            <button class="edit-translation-fragment-button">Редактировать</button>
+          <p class="project-translation-title">Фрагмент перевода</p>
+        {% if project_previews %}
+        <div class="project-info-button-container">
+          <button class="edit-translation-fragment-button">Редактировать</button>
             <button class="save-translation-fragment-button">Сохранить</button>
             <button class="remove-translation-fragment-button">Удалить</button>
-          </div>
-          <table class="translation-fragment">
+      </div>
+        <table class="translation-fragment">
+          <thead>
+              <tr>
+                  <th>Оригинал ({{project_original}})</th>
+                  <th>Перевод ({{project_translation}})</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr>
+                  <td class="original-text">{{project_previews[0][0]}}</td>
+                  <td class="translation-text">{{project_previews[0][1]}}</td>
+              </tr>
+          </tbody>
+      </table>
+{% else %}
+<div class="project-info-button-container">
+  <button class="add-translation-fragment-button">Добавить фрагмент перевода</button>
+</div>
+{% endif %}
+        <!-- <table class="translation-fragment">
             <thead>
                 <tr>
-                    <th>Оригинал ({{project_original}})</th>
-                    <th>Перевод ({{project_translation}})</th>
+                    <th>Оригинал</th>
+                    <th>Перевод</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td class="original-text" contenteditable="true">{{project_previews[0]}}</td>
-                    <td class="translation-text" contenteditable="true">{{project_previews[1]}}</td>
+                    <td class="original-text">{{project_previews[0]}}</td>
+                    <td class="translation-text">{{project_previews[1]}}</td>
                 </tr>
             </tbody>
-        </table>
-        </div> -->
+        </table> -->
+        </div>
       </section>
   </main>
   {% include 'global/footer.html' %}
@@ -114,6 +284,7 @@
   <script>
   {% include 'standalone/project.js' %}
   </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
 </body>
 
 </html>
