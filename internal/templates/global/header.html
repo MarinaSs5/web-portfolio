@@ -12,7 +12,7 @@
         <a href="/me/{{user_id}}/info">
         <div class="profile-name-container">
           <p class="profile-name-text-header">{{user_name}} {{user_surname}}</p>
-          <img class="profile-photo-small" src="/me/{{user_id}}/avatar">
+          <img class="profile-photo-small" onerror="this.src='/static/profile-photo.png'" src="/me/{{user_id}}/avatar">
 
         </div>
         </a>

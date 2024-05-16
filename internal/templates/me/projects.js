@@ -12,16 +12,16 @@ function add_project() {
     .then(response => response.json())
     .then(data => {
         if (data.result !== 'invalid') {
-            // Создание нового элемента проекта и добавление его в DOM
-            const projectsList = document.querySelector('.projects-list'); // Предположим, что у вас есть элемент с этим классом
+            const projectsList = document.querySelector('.projects-list'); 
             const newProject = document.createElement('div');
+            newProject.id = `project-item-${data.result}`; // Важно добавить ID здесь
             newProject.className = 'projects-item';
             newProject.innerHTML = `
                 <a class="project-link" href="/project/${data.result}">
-                    <div class="delete-button" onclick="remove_project(event, '${data.result}'); return false;">&#10006;</div>
-                    <img class="project-img" src="/project/${data.result}/thumbnail">
+                    <img class="project-img" onerror="this.src='/static/project-default.png'" src="/project/${data.result}/thumbnail">
                     <p class="project-title">${projectName}</p>
-                </a>`;
+                </a>
+                <div class="delete-button" onclick="remove_project(event, '${data.result}'); return false;">&#10006;</div>`;
             projectsList.appendChild(newProject);
         } else {
             alert('Ошибка при добавлении проекта');

@@ -34,7 +34,7 @@
   <main>
     <section class="projects-user-info-container">
         <div class="projects-user-info">
-            <img class="profile-photo-projects-user-info" src="/me/{{profile_id}}/avatar">
+            <img class="profile-photo-projects-user-info" onerror="this.src='/static/profile-photo.png'" src="/me/{{profile_id}}/avatar">
             <p class="projects-user-name-text">{{profile_name}} {{ profile_surname }}</p>
         </div>
       </section>
@@ -62,7 +62,7 @@
             {% for project in profile_projects %}
             <div id="project-item-{{ project[0] }}" class="projects-item">
                 <a class="project-link" href="/project/{{ project[0] }}">
-                    <img class="project-img" src="/project/{{ project[0] }}/thumbnail">
+                    <img class="project-img" onerror="this.src='/static/project-default.png'" src="/project/{{ project[0] }}/thumbnail">
                     <p class="project-title">{{ project[1] }}</p>
                 </a>
                 {% if own %}

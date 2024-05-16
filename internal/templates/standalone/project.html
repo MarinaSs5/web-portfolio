@@ -39,7 +39,7 @@
   <main>
     <section class="projects-user-info-container">
         <div class="projects-user-info">
-            <img class="profile-photo-projects-user-info" src="/me/{{project_user_id}}/avatar">
+            <img class="profile-photo-projects-user-info" onerror="this.src='/static/profile-photo.png'" src="/me/{{project_user_id}}/avatar">
             <p class="projects-user-name-text">{{project_user_name}} {{ project_user_surname }}</p>
         </div>
       </section>
@@ -62,7 +62,7 @@
           </div>
           <div class="project-description-info">
             <div class="project-image-container">
-              <img class="project-cover-img" src="/project/{{project_id}}/thumbnail">
+              <img class="project-cover-img" onerror="this.src='/static/project-default.png'" src="/project/{{project_id}}/thumbnail">
               <form id="cover_form" enctype="multipart/form-data">
                 <input id="cover_input" name="thumbnail" type="file" style="display: none;">
                 <button type="button" id="add-project-cover-button" class="add-project-cover-button">Прикрепить обложку</button>

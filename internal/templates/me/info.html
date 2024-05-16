@@ -39,7 +39,7 @@
     <section class="profile-info-container">
       <div class="profile-box">
         <div>
-        <img class="profile-photo-large" src="/me/{{profile_id}}/avatar">
+        <img class="profile-photo-large" onerror="this.src='/static/profile-photo.png'" src="/me/{{profile_id}}/avatar">
         <!-- <div class="add-avatar-container">
           <form id="avatar_form" enctype="multipart/form-data">
             <input id="avatar_input" name="avatar" type="file" onchange="file_updated(this)">

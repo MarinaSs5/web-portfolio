@@ -301,13 +301,19 @@ font-size: 14px;
 line-height: 16px;
 }
 
-.save-project-button:hover, .edit-project-button:hover, .add-project-cover-button:hover, .attach-file-button:hover {
+.save-project-button:hover, .edit-project-button:hover, .add-project-cover-button:hover, .attach-file-button:hover, .add-translation-fragment-button:hover,
+.edit-translation-fragment-button:hover,
+.save-translation-fragment-button:hover,
+.remove-translation-fragment-button:hover {
     background-color: #f0f0f0;
     border-color: #555;
     color: #333;
 }
 
-.save-project-button:active, .edit-project-button:active, .add-project-cover-button:active, .attach-file-button:active {
+.save-project-button:active, .edit-project-button:active, .add-project-cover-button:active, .attach-file-button:active, .add-translation-fragment-button:active,
+.edit-translation-fragment-button:active,
+.save-translation-fragment-button:active,
+.remove-translation-fragment-button:active {
     background-color: #ccc;
     border-color: #333;
     color: #000;
@@ -321,7 +327,57 @@ display: none;
 .edit-translation-fragment-button,
 .save-translation-fragment-button,
 .remove-translation-fragment-button{
-    
+    all: initial;
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #000000;
+    box-sizing: border-box;
+    background: #FFFFFF;
+    border: 1px solid #000000;
+    border-radius: 25px;
+    margin-right: 10px;
+}
+
+.add-translation-fragment-button{
+    padding: 5px 10px 5px 23px;
+    background: url(/static/add-blue-icon.svg) no-repeat;
+    background-size: 12px 12px;
+    background-position-y: center;
+    background-position-x: 10px;
+    margin-bottom: 20px;
+}
+
+.save-translation-fragment-button{
+    padding: 5px 10px 5px 25px;
+    background: url(/static/save-blue-icon.svg) no-repeat;
+    background-size: 12px 12px;
+    background-position-y: center;
+    background-position-x: 10px;
+    margin-bottom: 20px;
+}
+
+.remove-translation-fragment-button{
+    padding: 5px 10px 5px 25px;
+    background: url(/static/cross-circle-language-icon.svg) no-repeat;
+    background-size: 12px 12px;
+    background-position-y: center;
+    background-position-x: 10px;
+    margin-bottom: 20px;
+}
+
+.edit-translation-fragment-button{
+    padding: 5px 10px 5px 25px;
+    background: url(/static/edit-blue-icon.svg) no-repeat;
+    background-size: 12px 12px;
+    background-position-y: center;
+    background-position-x: 10px;
+    margin-bottom: 20px;
 }
 
 .project-title[contenteditable]{

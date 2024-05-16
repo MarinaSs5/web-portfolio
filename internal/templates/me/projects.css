@@ -263,9 +263,11 @@ color: #000000;
     flex-grow: 0;
     margin: 5px 0;
     text-overflow: ellipsis;
-    white-space: nowrap;
     overflow: hidden;
     text-decoration: none;
+    word-wrap: break-word;
+    word-break: break-all;
+    
 }
 
 .projects-list a{
