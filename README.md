@@ -18,4 +18,4 @@
 [Гаян](https://vk.com/id379472022)
 [Александр](https://vk.com/id218609984)
 [Дамир](https://vk.com/id302121073)
-[Света](https://vk.com/id281117751)
+[Светлана](https://vk.com/id281117751)
