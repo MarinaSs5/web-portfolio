@@ -1,0 +1,9 @@
+<header style="background-color: lightgray;">
+    {% if user %}
+        {{user.name}} {{user.surname}}
+        <a href="/sign/out">Выйти</a>
+    {% else %}
+        <a href="/sign/up">Регистрация</a>
+        <a href="/sign/in">Войти</a>
+    {% endif %}
+</header>

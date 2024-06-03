@@ -1,0 +1,28 @@
+{% include 'global/header.html' %}
+<label>Логин</label><input id="login"><br>
+<label>Пароль</label><input id="password"><br>
+<button onclick="submit($('#login').val(), $('#password').val())">Войти</button>
+{% include 'global/footer.html' %}
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+function submit(login, password)
+{
+    $.post('/sign/in/submit',
+    {
+        'login': login,
+        'password': password,
+    },
+    function(response)
+    {
+        if(response['result'] == 'invalid')
+            alert('Неверный пароль.');
+
+        else if(response['result'] == 'ok')
+            window.location.href = '/me/' + login + '/info';
+
+        else
+            alert('Неизвестная ошибка.');
+    }, 'json');
+}
+</script>

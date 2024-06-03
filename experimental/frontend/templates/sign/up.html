@@ -1,0 +1,33 @@
+{% include 'global/header.html' %}
+<label>Логин</label><input id="login"><br>
+<label>Имя</label><input id="name"><br>
+<label>Фамилия</label><input id="surname"><br>
+<label>Пароль</label><input id="password"><br>
+<label>Ещё раз</label><input id="repeat"><br>
+<button onclick="submit($('#login').val(), $('#name').val(), $('#surname').val(), $('#password').val(), $('#repeat').val())">Зарегистрироваться</button>
+{% include 'global/footer.html' %}
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+function submit(login, name, surname, password, repeat)
+{
+    $.post('/sign/up/submit',
+    {
+        'login': login,
+        'name': name,
+        'surname': surname,
+        'password': password,
+    },
+    function(response)
+    {
+        if(response['result'] == 'already')
+            alert('Пользователь с таким логином уже есть.');
+
+        else if(response['result'] == 'ok')
+            window.location.href = '/me/' + login + '/info';
+
+        else
+            alert('Неизвестная ошибка.');
+    }, 'json');
+}
+</script>
