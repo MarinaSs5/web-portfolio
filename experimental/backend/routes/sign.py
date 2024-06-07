@@ -1,5 +1,5 @@
 import flask
-import database as db, application as app, authentication as auth, session
+import database as db, application as app, authentication as auth, session, decorators
 
 
 
@@ -11,18 +11,14 @@ def sign_up(user):
     return flask.render_template('sign/up.html')
 
 @app.post('/sign/up/submit')
+@decorators.keywordize_post_arguments('login', 'name', 'surname', 'password', required = True)
 @db.save_changes
-def signup_submit():
-    if not set(('login', 'name', 'surname', 'password')).issubset(flask.request.form):
-        flask.abort(401)
-
-    user_id = flask.request.form['login']
-    user_pw = flask.request.form['password']
-    if db.execute(db.handle.select(db.models.user).where(db.models.user.id == user_id)).scalar():
+def signup_submit(login, name, surname, password):
+    if db.execute(db.handle.select(db.models.user).where(db.models.user.id == login)).scalar():
         return flask.jsonify({'result': 'already'})
     
-    new_user = db.models.user(id = user_id, auth = auth.generate_auth(user_pw), name = flask.request.form['name'], surname = flask.request.form['surname'], sessions = [])
-    session.assign(new_user, user_pw)
+    new_user = db.models.user(id = login, auth = auth.generate_auth(password), name = name, surname = surname, sessions = [])
+    session.assign(new_user, password)
     db.handle.session.add(new_user)
     return flask.jsonify({'result': 'ok'})
 

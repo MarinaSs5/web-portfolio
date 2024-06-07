@@ -21,15 +21,26 @@ class user(db.handle.Model):
     avatar_ref = db.optional_reference('file.id')
     avatar     = sqlalchemy.orm.relationship('file', foreign_keys = avatar_ref, cascade = 'all, delete-orphan', uselist = False, single_parent = True, lazy = 'raise') # one-to-one fore, yes foreref, no backref
     about      = db.optional_field(sqlalchemy.UnicodeText)
-    skills     = db.optional_field(sqlalchemy.UnicodeText)
+    skill      = db.optional_field(sqlalchemy.UnicodeText)
     projects   = sqlalchemy.orm.relationship('project', back_populates = 'user', cascade = 'all, delete-orphan', uselist = True, lazy = 'raise') # one-to-many fore, no foreref, yes backref
 
 class project(db.handle.Model):
-    id       = db.implicit_key()
-    name     = db.required_field(sqlalchemy.UnicodeText)
-    user_ref = db.required_reference('user.id')
-    user     = sqlalchemy.orm.relationship('user', back_populates = 'projects', foreign_keys = user_ref, uselist = False, lazy = 'raise') # one-to-many back, no foreref, yes backref
+    id          = db.implicit_key()
+    user_ref    = db.required_reference('user.id')
+    user        = sqlalchemy.orm.relationship('user', back_populates = 'projects', foreign_keys = user_ref, uselist = False, lazy = 'raise') # one-to-many back, no foreref, yes backref
+    date        = db.required_field(sqlalchemy.Double)
+    name        = db.required_field(sqlalchemy.UnicodeText)
+    type        = db.optional_field(sqlalchemy.UnicodeText)
+    original    = db.optional_field(sqlalchemy.UnicodeText)
+    translation = db.optional_field(sqlalchemy.UnicodeText)
+    description = db.optional_field(sqlalchemy.UnicodeText)
+    thumbnail_ref       = db.optional_reference('file.id')
+    thumbnail           = sqlalchemy.orm.relationship('file', foreign_keys = thumbnail_ref, cascade = 'all, delete-orphan', uselist = False, single_parent = True, lazy = 'raise') # one-to-one fore, yes foreref, no backref
+    content_ref         = db.optional_reference('file.id')
+    content             = sqlalchemy.orm.relationship('file', foreign_keys = content_ref, cascade = 'all, delete-orphan', uselist = False, single_parent = True, lazy = 'raise') # one-to-one fore, yes foreref, no backref
+    preview_original    = db.optional_field(sqlalchemy.UnicodeText)
+    preview_translation = db.optional_field(sqlalchemy.UnicodeText)
 
 class file(db.handle.Model):
     id       = db.implicit_key()
-    contents = db.protected_required_field(sqlalchemy.LargeBinary)
+    contents = db.required_field(sqlalchemy.LargeBinary)

@@ -1,10 +1,11 @@
 import flask
-import database as db, application as app
+import database as db, application as app, session
 
 
 
 
 
 @app.get('/')
-def index():
-    return flask.render_template('standalone/index.html')
+@session.fetch_from_session()
+def index(user):
+    return flask.render_template('standalone/index.html', user = user)
