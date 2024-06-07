@@ -1,28 +1,54 @@
-{% include 'global/header.html' %}
-<label>Логин</label><input id="login"><br>
-<label>Пароль</label><input id="password"><br>
-<button onclick="submit($('#login').val(), $('#password').val())">Войти</button>
-{% include 'global/footer.html' %}
-
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-function submit(login, password)
-{
-    $.post('/sign/in/submit',
-    {
-        'login': login,
-        'password': password,
-    },
-    function(response)
-    {
-        if(response['result'] == 'invalid')
-            alert('Неверный пароль.');
-
-        else if(response['result'] == 'ok')
-            window.location.href = '/me/' + login + '/info';
-
-        else
-            alert('Неизвестная ошибка.');
-    }, 'json');
-}
-</script>
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Войти</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <!--link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style-header.css">
+    <link rel="stylesheet" href="style-footer.css">
+    <link rel="stylesheet" href="signin-style.css"-->
+    <style>
+      {% include 'global/style.css' %}
+      {% include 'sign/in.css' %}
+    </style>
+  </head>
+  <body>
+    {% include 'global/header.html' %}
+    <!-- <header>
+      <div class="main-header">
+        <a href="/"><img src="../static/logo.png" class="logo-picture"></a>
+        <input class="search-field" type="text" id="search" placeholder="Найти пользователя">
+        <div class="header-button-container">
+          <a href="/signup" class="register-button">Зарегистрироваться</a>
+          <a href="/signin" class="login-button">Войти</a>
+        </div>
+      </div
+    </header> -->
+    <main>
+      <section class="sign-in">
+        <div class="sign-in-box">
+          <div class="input-box">
+            <label for="username">Логин</label>
+            <input type="text" id="username" name="username">
+          </div>
+          <div class="input-box">
+            <label for="password">Пароль</label>
+            <input type="password" id="password" name="password">
+            <div class="eye-password" onclick="showPassword()"></div>
+          </div>
+          <a class="login-button" onclick="submit($('#username').val(), $('#password').val())">Войти</a>
+        </div>
+      </section>
+    </main>
+    {% include 'global/footer.html' %}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      {% include 'sign/in.js' %}
+    </script>
+    </body>
+    
+    </html>
