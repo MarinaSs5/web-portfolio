@@ -1,0 +1,22 @@
+main {
+    margin: 0 auto;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    flex: 1;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    font-size: 18px;
+    min-height: 100vh;
+}
+

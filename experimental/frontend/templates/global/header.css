@@ -1,0 +1,232 @@
+header {
+    background-color: #B0C3FF;
+    width: 100%;
+    font-family: 'Rubik';
+font-style: normal;
+font-weight: 300;
+font-size: 14px;
+line-height: 17px;
+}
+
+.main-header {
+    background-color: #B0C3FF;
+    padding-top: 14.5px;
+    padding-bottom: 14.5px;
+    width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.logo-picture {
+    width: 160px;
+    height: 26px;
+}
+
+.search-field {
+    all: unset;
+    box-sizing:border-box;
+    padding-left: 35px;
+    padding-top: 4.5px;
+    padding-bottom: 4.5px;
+    padding-right: 8px;
+    width: 311px;
+    height: 25px;
+    background-image: url('/static/search-icon.svg'); 
+    background-position: 10px center; 
+    background-repeat: no-repeat; 
+    background-size: 15px 15px;
+    background-color: #FFFFFF;
+    border-radius: 4px;
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 17px;
+}
+
+.hint-icon{
+    width: 20px;
+    height: 20px;
+    background-image: url('/static/hint-icon.svg'); 
+    background-position: center center; 
+    background-repeat: no-repeat; 
+    background-size: 20px 20px;
+    cursor: pointer;
+}
+
+.search-container{
+    display: flex;
+    flex-direction: space-between;
+    gap: 5px;
+    align-items:center;
+}
+
+.search-field::placeholder {
+    color: #C9C9C9;
+}
+
+.search-field:focus::placeholder {
+    color: transparent;
+}
+
+.search-field:focus {
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+.register-button {
+    padding: 7px 20px;
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: #FFFFFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #3658C1;
+    box-shadow: 0px 2.30769px 2.30769px rgba(0, 0, 0, 0.25);
+    border-radius: 4px;
+    margin-right: 20px;
+}
+.profile-photo-small {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.profile-name-container {
+    display: flex;
+    margin-right: 20px;
+    align-items: center;
+}
+
+.profile-name-text-header {
+    padding: 0;
+    margin: 0;
+    filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.25));
+    color: #FFFFFF;
+    margin-right: 10px;
+font-family: 'Rubik';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 17px;
+display: flex;
+align-items: center;
+text-align: center;
+
+}
+
+.header-button-container a{
+    text-decoration: none;
+}
+
+.register-button:hover {
+    background-color: #1d3c7d;
+}
+
+.login-button {
+    padding: 7px 20px;
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: #FFFFFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #3658C1;
+    box-shadow: 0px 2.30769px 2.30769px rgba(0, 0, 0, 0.25);
+    border-radius: 4px;
+}
+
+.header-button-container {
+    display: flex;
+    width: 400px;
+    justify-content: flex-end;
+    align-items: center;
+    height: 35px;
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 18px;
+
+
+}
+
+.login-button:hover {
+    background-color: #1d3c7d;
+}
+
+.logout-button{
+padding: 7px 20px;
+font-family: 'Rubik';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 17px;
+color: #FFFFFF;
+display: flex;
+justify-content: center;
+align-items: center;
+background: #3658C1;
+box-shadow: 0px 2.30769px 2.30769px rgba(0, 0, 0, 0.25);
+border-radius: 4px;
+}
+
+.logout-button:hover {
+    background-color: #1d3c7d;
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 150px;
+    background-color: rgba(0, 0, 0, 0.7) ;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+    position: absolute;
+    z-index: 1;
+    top: -50%;
+    left: 115%;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+
+.tooltip .tooltiptext::after {
+    content: " ";
+    position: absolute;
+    top: 50%;
+    right: 100%; /* To the left of the tooltip */
+    margin-top: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent rgba(0, 0, 0, 0.7) transparent transparent;
+}
+
+.tooltip .tooltiptext {
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+.tooltip:hover .tooltiptext {
+    opacity: 1;
+}

@@ -1,9 +1,38 @@
-<header style="background-color: lightgray;">
+<header>
+  <div class="main-header">
     {% if user %}
-        {{user.name}} {{user.surname}}
-        <a href="/sign/out">Выйти</a>
+    <a href="/"><img src="/static/logo.png" class="logo-picture"></a>
+      <div class="search-container">
+      <input class="search-field" type="text" id="search" placeholder="Найти пользователя...">
+      <div class="hint-icon tooltip">
+        <span class="tooltiptext">Введите запрос и нажите <b>Enter</b></span>
+      </div>
+      </div>
+      <div class="header-button-container">
+        <a href="/me/{{user.id}}/info">
+        <div class="profile-name-container">
+          <p class="profile-name-text-header">{{user.name}} {{user.surname}}</p>
+          <img class="profile-photo-small" onerror="this.src='/static/profile-photo.png'" src="/me/{{user.id}}/avatar">
+        </div>
+        </a>
+        <a class="logout-button" href="/sign/out">Выйти</a>
+      </div>
     {% else %}
-        <a href="/sign/up">Регистрация</a>
-        <a href="/sign/in">Войти</a>
+    <a href="/"><img src="/static/logo.png" class="logo-picture"></a>
+    <div class="search-container">
+      <input class="search-field" type="text" id="search" placeholder="Найти пользователя...">
+      <div class="hint-icon tooltip">
+        <span class="tooltiptext">Введите запрос и нажите<b>Enter</b></span>
+      </div>
+      </div>
+    <div class="header-button-container">
+      <a href="/sign/up" class="register-button">Зарегистрироваться</a>
+      <a href="/sign/in" class="login-button">Войти</a>
+      
+    </div>
     {% endif %}
+  </div>
+  <style>
+    {% include 'global/header.css' %}
+  </style>
 </header>
