@@ -12,11 +12,9 @@ handle = flask.Flask(__name__, static_folder = os.path.join(root_path, 'frontend
         template_folder = os.path.join(root_path, 'frontend', 'templates'))
 handle.secret_key = 'secret'
 
-
-
-
 get = handle.get
 post = handle.post
+errorhandler = handle.errorhandler
 
 
 
