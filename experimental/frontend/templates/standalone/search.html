@@ -1,0 +1,75 @@
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+пользователь: {{user.__dict__}}<br>
+запрос: {{query}}<br>
+
+{% if search_profiles %}
+поиск по профилям:<br>
+<ul>
+    {% for pr in profiles %}
+    <li>{{pr.__dict__}}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+{% if search_projects %}
+поиск по проектам:<br>
+<ul>
+    {% for pr in projects %}
+    <li>{{pr.__dict__}}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+Поиск на странице поиска:<br>
+<input id="quer" type="text" value="{{query}}"> <button id="srch">Поиск</button><br>
+<input id="prof" type="checkbox" {{'checked' if search_profiles else ''}}> <label>Поиск по профилям</label><br>
+<input id="proj" type="checkbox" {{'checked' if search_projects else ''}}> <label>Поиск по проектам</label><br>
+<script>
+$('#srch').bind('click', function ()
+{
+    search_profiles = $('#prof').prop('checked')
+    search_projects = $('#proj').prop('checked')
+    query = $('#quer').val()
+
+    if(query.length < 3)
+    {
+        alert('Запрос не может быть короче трёх символов.')
+        return;
+    }
+
+    if(!search_profiles && !search_projects)
+    {
+        alert('Критерии поиска должны содержать хотя бы одну категорию.')
+        return;
+    }
+
+    if(search_profiles && search_projects)
+        options = 'profiles+projects'
+    else if(search_profiles)
+        options = 'profiles'
+    else
+        options = 'projects'
+
+    window.location.replace(`/search/${query}/${options}`)
+})
+</script>
+
+
+<br>
+
+Поиск из шапки:<br>
+<input id="headquer" type="text" value="{{query}}"> <button id="headsrch">Поиск</button><br>
+<script>
+$('#headsrch').bind('click', function ()
+{
+    query = $('#headquer').val()
+
+    if(query.length < 3)
+    {
+        alert('Запрос не может быть короче трёх символов.')
+        return;
+    }
+
+    window.location.replace(`/search/${query}/profiles+projects`)
+})
+</script>
