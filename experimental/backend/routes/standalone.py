@@ -101,3 +101,28 @@ def fffidnfo_a(project, user):
     
     project.content = db.models.file(contents = content.read())
     return flask.jsonify({'result': 'ok'})
+
+
+
+
+@app.get('/search/<query>/<options>')
+@session.fetch_from_session()
+def srch(query, options, user):
+    search_profiles = (options == 'profiles') or (options == 'profiles+projects')
+    search_projects = (options == 'projects') or (options == 'profiles+projects')
+    if ((not search_profiles) and (not search_projects)) or (len(query) < 3):
+        flask.abort(401)
+
+    profiles = None if (not search_profiles) else db.execute(db.handle.select(db.models.user).where
+    (
+        db.models.user.name.icontains(query) | db.models.user.surname.icontains(query) | db.models.user.specialty.icontains(query) |
+        db.models.user.job.icontains(query) | db.models.user.city.icontains(query) | db.models.user.about.icontains(query) |
+        db.models.user.skill.icontains(query)
+    )).scalars()
+    projects = None if (not search_projects) else db.execute(db.handle.select(db.models.project).where
+    (
+        db.models.project.name.icontains(query) | db.models.project.type.icontains(query) | db.models.project.original.icontains(query) |
+        db.models.project.translation.icontains(query) | db.models.project.description.icontains(query) | db.models.project.preview_original.icontains(query) |
+        db.models.project.preview_translation.icontains(query)
+    )).scalars()
+    return flask.render_template('standalone/search.html', user = user, profiles = profiles, projects = projects, query = query, search_profiles = search_profiles, search_projects = search_projects)
