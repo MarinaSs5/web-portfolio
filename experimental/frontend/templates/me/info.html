@@ -61,21 +61,21 @@
             </div>
           </div>
           <div class="profile-main-info">
-            <div class="profile-name-text profession-icon" id="edit-profile-specialty" placeholder="Вашу профессия...">
+            <div class="profile-name-text profession-icon" id="edit-profile-specialty" placeholder="Специальность">
               {% if profile.specialty %}
                 {{ profile.specialty }}
               {% else %}
                 Специальность
               {% endif %} 
               </div>
-            <div class="profile-name-text city-icon" id="edit-profile-city" placeholder="Место жительства...">
+            <div class="profile-name-text city-icon" id="edit-profile-city" placeholder="Город">
               {% if profile.city %}
               {{profile.city}}
             {% else %}
               Город
             {% endif %} 
               </div>
-            <div class="profile-name-text job-icon" id="edit-profile-job" placeholder="Место работы...">
+            <div class="profile-name-text job-icon" id="edit-profile-job" placeholder="Место работы">
               {% if profile.job %}
               {{profile.job}}
             {% else %}

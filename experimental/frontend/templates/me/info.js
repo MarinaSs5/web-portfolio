@@ -118,8 +118,7 @@ function update_avatar() {
 
 function update_fields(name, surname, specialty, city, job, mail, vk, tg, about, skill)
 {
-    $.post('/me/{{profile.id}}/info/update',
-    {
+    $.post('/me/{{ profile.id }}/info/update', {
         'name': name,
         'surname': surname,
         'specialty': specialty,
@@ -139,14 +138,23 @@ function update_fields(name, surname, specialty, city, job, mail, vk, tg, about,
 }
 
 function make_editable_elements() {
-    $("#edit-profile-name").attr("contenteditable", "true");
-    $("#edit-profile-surname").attr("contenteditable", "true");
-    $("#edit-profile-specialty").attr("contenteditable", "true");
-    $("#edit-profile-city").attr("contenteditable", "true");
-    $("#edit-profile-job").attr("contenteditable", "true");
-    $("#edit-profile-mail").attr("contenteditable", "true");
-    $("#edit-profile-tg").attr("contenteditable", "true");
-    $("#edit-profile-vk").attr("contenteditable", "true");
+    const fields = [
+        { id: "#edit-profile-specialty", placeholder: "Специальность" },
+        { id: "#edit-profile-city", placeholder: "Город" },
+        { id: "#edit-profile-job", placeholder: "Место работы" },
+        { id: "#edit-profile-mail", placeholder: "Электронная почта" },
+        { id: "#edit-profile-tg", placeholder: "Телеграм" },
+        { id: "#edit-profile-vk", placeholder: "Вконтакте" }
+    ];
+
+    fields.forEach(field => {
+        let element = $(field.id);
+        if (element.text().trim() === field.placeholder) {
+            element.text('');
+        }
+        element.attr("contenteditable", "true");
+    });
+    
     $(".add-language-container").show();
     $(".remove-language-button").show();
     $(".add-avatar-container").show();
@@ -169,29 +177,24 @@ function save_profile_info() {
         $("#skills-input").val()                                    // !!!
     );
 
-    $("#edit-profile-name").attr("contenteditable", "false");
-    $("#edit-profile-name").addClass("not-editable");
+    const fields = [
+        "#edit-profile-name",
+        "#edit-profile-surname",
+        "#edit-profile-specialty",
+        "#edit-profile-city",
+        "#edit-profile-job",
+        "#edit-profile-mail",
+        "#edit-profile-tg",
+        "#edit-profile-vk"
+    ];
 
-    $("#edit-profile-surname").attr("contenteditable", "false");
-    $("#edit-profile-surname").addClass("not-editable");
-
-    $("#edit-profile-specialty").attr("contenteditable", "false");
-    $("#edit-profile-specialty").addClass("not-editable");
-
-    $("#edit-profile-city").attr("contenteditable", "false");
-    $("#edit-profile-cityy").addClass("not-editable");
-
-    $("#edit-profile-job").attr("contenteditable", "false");
-    $("#edit-profile-job").addClass("not-editable");
-
-    $("#edit-profile-mail").attr("contenteditable", "false");
-    $("#edit-profile-mail").addClass("not-editable");
-
-    $("#edit-profile-tg").attr("contenteditable", "false");
-    $("#edit-profile-tg").addClass("not-editable");
-
-    $("#edit-profile-vk").attr("contenteditable", "false");
-    $("#edit-profile-vk").addClass("not-editable");
+    fields.forEach(id => {
+        $(id).attr("contenteditable", "false");
+        $(id).addClass("not-editable");
+        if (!$(id).text().trim()) {
+            $(id).text($(id).attr("placeholder"));
+        }
+    });
 
     $(".remove-language-button").hide();
 
@@ -271,4 +274,6 @@ function autoResizeTextarea() {
 $('textarea').each(function () {
     autoResizeTextarea.call(this);
 }).on('input', autoResizeTextarea);
+
+
 
