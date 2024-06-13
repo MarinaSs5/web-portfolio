@@ -1,10 +1,42 @@
-Код ошибки: {{code}}<br>
-Описание:
-{{
-    {
-        404: 'Мы не можем завершить это действие',
-        404: 'Страница, которую вы ищите, не найдена',
-        405: 'Мы не можем завершить это действие',
-        500: 'Произошла ошибка на нашей стороне'
-    }.get(code, 'Произошла неизвестная ошибка')
-}}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LingFolio - Ошибка</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+
+  <style>
+    {% include 'global/style.css' %}
+    {% include 'standalone/error.css' %}
+  </style>
+</head>
+<body>
+  <main class="error-container">
+    <div class="error-text-container">
+        <p class="error-title">Что-то пошло не так!</p>
+        <div class="error-code-container">
+            <img src="/static/error.png" class="error-img">
+            <div class="error-code-text-container">
+                <p class="error-code-title">Ошибка</p>
+                <p class="error-code">{{code}}</p>
+            </div>
+        </div>
+        <p class="error-description">
+            {{
+                {
+                    401: 'Мы не можем завершить это действие',
+                    404: 'Страница, которую вы ищите, не найдена',
+                    405: 'Мы не можем завершить это действие',
+                    500: 'Произошла ошибка на нашей стороне'
+                }.get(code, 'Произошла неизвестная ошибка')
+            }}
+        </p>
+    </div>
+    <a href="/" class="main-button">На главную</a>
+    <img src="/static/error-woman.png" class="woman-error-img">
+  </main>
+</body>
+</html>
