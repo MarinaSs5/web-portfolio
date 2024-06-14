@@ -2,12 +2,14 @@
   <div class="main-header">
     {% if user %}
     <a href="/"><img src="/static/logo.png" class="logo-picture"></a>
+      {% if not ('/search/' in request.path) %} <!-- Проверка, не находимся ли мы на странице поиска -->
       <div class="search-container">
-      <input class="search-field" type="text" id="search" placeholder="Найти пользователя...">
-      <div class="hint-icon tooltip">
-        <span class="tooltiptext">Введите запрос и нажите <b>Enter</b></span>
+        <input class="search-field" type="text" id="search" placeholder="Найти пользователя...">
+        <div class="hint-icon tooltip">
+          <span class="tooltiptext">Введите запрос и нажите <b>Enter</b></span>
+        </div>
       </div>
-      </div>
+      {% endif %}
       <div class="header-button-container">
         <a href="/me/{{user.id}}/info">
         <div class="profile-name-container">
@@ -19,12 +21,14 @@
       </div>
     {% else %}
     <a href="/"><img src="/static/logo.png" class="logo-picture"></a>
+    {% if not ('/search/' in request.path) %} <!-- Проверка, не находимся ли мы на странице поиска -->
     <div class="search-container">
       <input class="search-field" type="text" id="search" placeholder="Найти пользователя...">
       <div class="hint-icon tooltip">
         <span class="tooltiptext">Введите запрос и нажите<b>Enter</b></span>
       </div>
       </div>
+    {% endif %}
     <div class="header-button-container">
       <a href="/sign/up" class="register-button">Зарегистрироваться</a>
       <a href="/sign/in" class="login-button">Войти</a>

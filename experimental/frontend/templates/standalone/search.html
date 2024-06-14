@@ -1,75 +1,74 @@
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-пользователь: {{user.__dict__}}<br>
-запрос: {{query}}<br>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LingFolio - Главная</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
 
-{% if search_profiles %}
-поиск по профилям:<br>
-<ul>
-    {% for pr in profiles %}
-    <li>{{pr.__dict__}}</li>
-    {% endfor %}
-</ul>
-{% endif %}
-
-{% if search_projects %}
-поиск по проектам:<br>
-<ul>
-    {% for pr in projects %}
-    <li>{{pr.__dict__}}</li>
-    {% endfor %}
-</ul>
-{% endif %}
-
-Поиск на странице поиска:<br>
-<input id="quer" type="text" value="{{query}}"> <button id="srch">Поиск</button><br>
-<input id="prof" type="checkbox" {{'checked' if search_profiles else ''}}> <label>Поиск по профилям</label><br>
-<input id="proj" type="checkbox" {{'checked' if search_projects else ''}}> <label>Поиск по проектам</label><br>
-<script>
-$('#srch').bind('click', function ()
-{
-    search_profiles = $('#prof').prop('checked')
-    search_projects = $('#proj').prop('checked')
-    query = $('#quer').val()
-
-    if(query.length < 3)
-    {
-        alert('Запрос не может быть короче трёх символов.')
-        return;
-    }
-
-    if(!search_profiles && !search_projects)
-    {
-        alert('Критерии поиска должны содержать хотя бы одну категорию.')
-        return;
-    }
-
-    if(search_profiles && search_projects)
-        options = 'profiles+projects'
-    else if(search_profiles)
-        options = 'profiles'
-    else
-        options = 'projects'
-
-    window.location.replace(`/search/${query}/${options}`)
-})
-</script>
-
-
-<br>
-
-Поиск из шапки:<br>
-<input id="headquer" type="text" value="{{query}}"> <button id="headsrch">Поиск</button><br>
-<script>
-$('#headsrch').bind('click', function ()
-{
-    query = $('#headquer').val()
-
-    if(query.length < 3)
-    {
-        alert('Запрос не может быть короче трёх символов.')
-        return;
-    }
-
-    window.location.replace(`/search/${query}/profiles+projects`)
-})
-</script>
+  <style>
+    {% include 'global/style.css' %}
+    {% include 'standalone/search.css' %}
+  </style>
+</head>
+<body>
+  {% include 'global/header.html' %}
+  <main>
+    <section class="search-options-container">
+        <div class="search-field-container">
+            <input class="main-search-field" type="text"  placeholder="Введите свой запрос..." value="{{ query }}">
+            <button class="main-search-button">Поиск</button>
+          </div>
+          <div class="search-type-selectors">
+            <div>
+            <input id="prof" type="checkbox" {{'checked' if search_profiles else ''}}>
+            <label for="prof">Поиск по профилям</label> 
+            </div>
+            <div>
+            <input id="proj" type="checkbox" {{'checked' if search_projects else ''}}>
+            <label for="proj">Поиск по проектам</label>   
+            </div>
+            
+          </div>
+    </section>
+    <section class="search-results-container">
+        {% if search_profiles %}
+        {% for pr in profiles %}
+        <a class="profile-link" href="/me/{{pr.id}}/info">
+            <div class="profile-card">
+                <img class="profile-card-photo" onerror="this.src='/static/profile-photo.png'" src="/me/{{pr.id}}/avatar">
+                <div class="profile-info">
+                    <p class="profile-name">{{pr.name}} {{pr.surname}}</p>
+                    <p class="profile-specialty">{{pr.specialty}}</p>
+                    <p class="profile-city">{{pr.city}}</p>
+                    <p class="profile-job">{{pr.job}}</p>
+                </div>
+            </div>
+        </a>
+        {% endfor %}
+        {% endif %}
+        {% if search_projects %}
+        {% for pr in projects %}
+        <a class="project-link" href="/project/{{pr.id}}">
+            <div class="project-card">
+                <img class="profile-card-photo" onerror="this.src='/static/project-default.png'" src="/project/{{ pr.id }}/thumbnail">
+                <div class="profile-info">
+                    <p class="project-name">{{pr.name}}</p>
+                    <p class="project-description">{{pr.description}}</p>
+                </div>
+            </div>
+        </a>
+        {% endfor %}
+        {% endif %}
+      </section>
+  </main>
+  {% include 'global/footer.html' %}
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script> 
+    {% include 'global/header.js' %}
+    {% include 'standalone/search.js' %}
+  </script>
+</body>
+</html>

@@ -1,0 +1,184 @@
+main{
+    background: #EDEEF0;
+}
+
+.search-options-container{
+    width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: space-between;
+    padding-top: 30px;
+
+}
+
+.main-search-field{
+all: unset;
+box-sizing:border-box;
+background-image: url('/static/search-icon.svg'); 
+background-position: 10px center; 
+background-repeat: no-repeat; 
+background-size: 15px 15px;
+background-color: #FFFFFF;
+border-radius: 4px;
+font-family: 'Rubik';
+font-style: normal;
+font-weight: 300;
+font-size: 14px;
+line-height: 17px;
+padding: 8px 8px 8px 40px;
+width: 100%;
+height: 36px;
+box-shadow: 0px 2.30769px 2.30769px rgba(0, 0, 0, 0.25);
+margin-right: 50px;
+}
+
+.search-field-container{
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.main-search-button{
+    all: unset;
+    padding: 7px 20px;
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: #FFFFFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #3658C1;
+    box-shadow: 0px 2.30769px 2.30769px rgba(0, 0, 0, 0.25);
+    border-radius: 4px;
+}
+
+input[type="checkbox"] {
+    transform: scale(1.5);
+    margin: 10px; 
+}
+
+label{
+font-family: 'Roboto', sans-serif;
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+line-height: 22px;
+color: #000000;
+margin-right: 20px;
+}
+
+.search-type-selectors{
+    display: flex;
+    align-items:center;
+    margin-bottom: 30px;
+}
+
+.search-results-container{
+box-sizing: border-box;
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+justify-content: flex-start;
+padding: 20px;
+width: 1100px;
+background: #FFFFFF;
+border: 1px solid #3C58A4;
+border-radius: 8px;
+margin: 0 auto;
+margin-bottom: 20px;
+}
+
+.profile-card, .project-card{
+    display: flex;
+    padding: 20px;
+align-items: flex-start;
+padding: 20px;
+background: #FFFFFF;
+box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+border-radius: 4px;
+margin-bottom: 20px;
+width: 100%;
+box-sizing: border-box;
+}
+
+.profile-card-photo{
+    width: 150px;
+    height: 150px;
+border-radius: 4px;
+object-fit: cover;
+margin-right: 20px;
+}
+
+.profile-link, .project-link{
+    text-decoration: none;
+    cursor: pointer;
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    color: black;
+}
+
+.profile-info{
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: flex-start;
+padding: 0px;
+gap: 20px;
+}
+
+.profile-name, .project-name{
+font-family: 'Rubik';
+font-style: normal;
+font-weight: 400;
+font-size: 24px;
+line-height: 28px;
+color: #000000;
+margin: 0;
+}
+
+.profile-specialty, .profile-city, .profile-job{
+    font-family: 'Roboto', sans-serif;
+font-style: normal;
+font-weight: 400;
+font-size: 15px;
+line-height: 15px;
+color: #6C6C6C;
+margin: 0;
+padding-left: 20px;
+}
+
+.profile-specialty{
+    background: url(/static/profession-icon.svg) no-repeat;
+    background-size: 15px 15px;
+    background-size: contain;
+}
+
+.profile-city{
+    background: url(/static/location-icon.svg) no-repeat;
+    background-size: 25px 25px;
+    background-size: contain;
+}
+
+.profile-job{
+    background: url(/static/company.svg) no-repeat;
+    background-size: 25px 25px;
+    background-size: contain;
+}
+
+.project-description{
+width: 100%;
+font-family: 'Roboto', sans-serif;
+font-style: normal;
+font-weight: 400;
+font-size: 15px;
+line-height: 15px;
+color: #6C6C6C;
+margin: 0;
+height: 85;
+overflow: hidden;
+}
+

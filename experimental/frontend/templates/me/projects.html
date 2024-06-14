@@ -9,27 +9,12 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
   <style>
-    {% include 'global/style.css' %}
-    {% include 'me/projects.css' %}
+    {% include 'global/style.css' %}{% include 'me/projects.css' %}
   </style>
 </head>
 
 <body>
   {% include 'global/header.html' %}
-  <!-- <header>
-    <div class="main-header">
-      <a href="/"><img src="../static/logo.png" class="logo-picture"></a>
-      <input class="search-field" type="text" id="search" placeholder="Найти пользователя">
-      <div class="header-button-container">
-        <div class="profile-name-container">
-          <p class="profile-name-text-header">Name Surname</p>
-          <img class="profile-photo-small" src="../static/profile-photo.png">
-        </div>
-        <a class="logout-button" href="/logout">Выйти</a>
-      </div>
-    </div>
-    </div>
-  </header> -->
   {% set own = user.id == profile.id %}
   <main>
     <section class="projects-user-info-container">
