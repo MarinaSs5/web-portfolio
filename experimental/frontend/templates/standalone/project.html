@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Проект</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
   <!-- <link rel="stylesheet" href="style.css">
@@ -70,9 +71,9 @@
             </div>
             <div class="project-main-description">
               <p class="table-description-title">Тип проекта:</p>
-              <div class="project-type">{{project.type}}</div>
+              <div class="project-type">{% if project.type %}{{ project.type }}{% endif %}</div>
               <p class="table-description-title">Описание проекта:</p>
-              <div class="project-description">{{project.description}}</div>
+              <div class="project-description">{% if project.description %}{{project.description}}{% endif %}</div>
               <p class="table-description-title">Язык оригинала:</p>
               <div class="project-original-lang">
                 <select class="edit-language-original" id="languageSelectOriginal" hidden>
@@ -147,7 +148,7 @@
                   <option value="Японский">Японский</option>
                   <option value="Ярбиа">Ярбиа</option>
               </select>
-              <span class="original-lang">{{project.original}}</span>
+              <span class="original-lang">{% if project.original %}{{project.original}}{% endif %}</span>
             </div>
               <p class="table-description-title">Язык перевода:</p>
               <div class="project-translation-lang">
@@ -223,7 +224,7 @@
                   <option value="Японский">Японский</option>
                   <option value="Ярбиа">Ярбиа</option>
               </select>
-                <span class="translation-lang">{{project.translation}}</span>
+                <span class="translation-lang">{% if project.translation %}{{project.translation}}{% endif %}</span>
               </div>
               <p class="table-description-title">Файл:</p>
               <div class="attach-file-container">
@@ -240,14 +241,14 @@
         <table class="translation-fragment">
           <thead>
               <tr>
-                  <th>Оригинал ({{project.original}})</th>
-                  <th>Перевод ({{project.translation}})</th>
+                  <th>Оригинал {% if project.original %}({{project.original}}){% endif %}</th>
+                  <th>Перевод {% if project.translation %}({{project.translation}}){% endif %}</th>
               </tr>
           </thead>
           <tbody>
               <tr>
-                  <td class="original-text">{{project.preview_original}}</td>
-                  <td class="translation-text">{{project.preview_translation}}</td>
+                  <td class="original-text">{% if project.preview_original %}({{project.preview_original}}){% endif %}</td>
+                  <td class="translation-text">{% if project.preview_translation %}({{project.preview_translation}}){% endif %}</td>
               </tr>
           </tbody>
       </table>
