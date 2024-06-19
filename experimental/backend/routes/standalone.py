@@ -38,7 +38,7 @@ def project(project, user):
 def avd(project):
     if not project.thumbnail_ref:
         flask.abort(404)
-    
+
     return flask.send_file(io.BytesIO(project.thumbnail.contents), mimetype = 'image/jpeg')
 
 @app.get('/project/<project>/content')
@@ -46,13 +46,13 @@ def avd(project):
 def davd(project):
     if not project.content_ref:
         flask.abort(404)
-    
+
     return flask.send_file(io.BytesIO(project.content.contents), mimetype = 'application/pdf')
 
 
 
 
-        
+
 
 @app.post('/project/<project>/update')
 @db.fetch_from_keyword(db.models.project, query_options = (db.allow(db.models.project.user),))
@@ -71,7 +71,7 @@ def pr_u(project, user, name, type, original, translation, description, preview_
     project.preview_original = preview_original
     project.preview_translation = preview_translation
     return flask.jsonify({'result': 'ok'})
-    
+
 @app.post('/project/<project>/newthumbnail')
 @db.fetch_from_keyword(db.models.project, query_options = (db.allow(db.models.project.user), db.allow(db.models.project.thumbnail)))
 @session.fetch_from_session(required = True)
@@ -83,7 +83,7 @@ def fffinfo_a(project, user):
     thumbnail = flask.request.files['thumbnail']
     if not thumbnail.filename:
         return flask.jsonify({'result': 'empty'})
-    
+
     project.thumbnail = db.models.file(contents = thumbnail.read())
     return flask.jsonify({'result': 'ok'})
 
@@ -98,18 +98,22 @@ def fffidnfo_a(project, user):
     content = flask.request.files['content']
     if not content.filename:
         return flask.jsonify({'result': 'empty'})
-    
+
     project.content = db.models.file(contents = content.read())
     return flask.jsonify({'result': 'ok'})
 
 
 
 
+import urllib
+
 @app.get('/search/<query>/<options>')
 @session.fetch_from_session()
 def srch(query, options, user):
     search_profiles = (options == 'profiles') or (options == 'profiles+projects')
     search_projects = (options == 'projects') or (options == 'profiles+projects')
+
+    query = urllib.parse.unquote_plus(query)
     if ((not search_profiles) and (not search_projects)) or (len(query) < 3):
         flask.abort(401)
 
