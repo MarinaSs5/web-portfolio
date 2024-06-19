@@ -14,10 +14,9 @@ def keywordize_post_arguments(*arguments, **kw):
         def ww(*args, **kwargs):
 
             for arg in arguments:
-                arg_value = flask.request.form.get(arg, None)
-                if (not arg_value) and required:
+                if (arg not in flask.request.form) and required:
                     flask.abort(unsupplied_code)
-                kwargs[arg] = arg_value
+                kwargs[arg] = flask.request.form.get(arg)
 
             return f(*args, **kwargs)
         return ww
