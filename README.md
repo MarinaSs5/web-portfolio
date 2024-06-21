@@ -11,6 +11,7 @@
 [Макет сайта](https://www.figma.com/design/Ia2KNJzK8qadcOgY60lxse/lingfolio?node-id=0-1&t=pJMStWJxnWs23Zzr-1)
 [Доска задач](https://github.com/users/MarinaSs5/projects/1/)
 [Карточка команды](https://project.ai-info.ru/teams/white-hatters)
+[Teamproject](https://teamproject.urfu.ru/#/9ab1a41b-3664-49dc-92ee-6fb88b99e406/about)
 [Актуальный сайт](https://lingfolio.ru)
 
 Связь с нами:
